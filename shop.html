@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shop All Products | VIP-TRADERS</title>
+
+    <meta name="description"
+        content="Explore premium watches, AirPods, adapters and electronics at VIP-TRADERS.">
+    <link rel="icon" href=v>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .shop-page {
+            max-width: 1250px;
+            margin: 45px auto;
+            padding: 0 20px;
+        }
+
+        .shop-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .shop-heading h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .shop-heading p {
+            color: #777;
+        }
+
+        .shop-toolbar {
+            display: grid;
+            grid-template-columns: 1fr 220px 220px;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .shop-toolbar input,
+        .shop-toolbar select {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            background: white;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .shop-toolbar input:focus,
+        .shop-toolbar select:focus {
+            border-color: #d8b36a;
+        }
+
+        .shop-result-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        #shopProducts {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .shop-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 15px;
+            border: 1px dashed #ddd;
+            border-radius: 10px;
+        }
+
+        .shop-empty h3 {
+            margin-bottom: 10px;
+        }
+
+        .shop-empty p {
+            color: #777;
+        }
+
+        .shop-empty a {
+            display: inline-block;
+            margin-top: 15px;
+            color: #b9852d;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .shop-bottom {
+            text-align: center;
+            margin-top: 45px;
+        }
+
+        .shop-bottom a {
+            color: #b9852d;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 1000px) {
+            #shopProducts {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .shop-toolbar {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .shop-toolbar input {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 700px) {
+            #shopProducts {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 14px;
+            }
+
+            .shop-heading h1 {
+                font-size: 28px;
+            }
+
+            .shop-toolbar {
+                grid-template-columns: 1fr;
+            }
+
+            .shop-toolbar input {
+                grid-column: auto;
+            }
+        }
+
+        @media (max-width: 380px) {
+            #shopProducts {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-container">
+
+            <a href="index.html" class="brand">
+                <img
+                    src="vip-traders-logo.png" alt="VIP TRADERS Logo"
+                    class="brand-logo"
+                >
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html" class="active">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="shop.html?category=Watches">Watches</a>
+                <a href="shop.html?category=Electronics">Electronics</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <a href="cart.html" class="cart-button">
+                    <span>🛍️</span>
+                    <span>Cart</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+    </header>
+
+    <!-- SHOP PAGE -->
+
+    <main class="shop-page">
+
+        <section class="shop-heading">
+
+            <h1>Explore Our Collection</h1>
+
+            <p>
+                Discover premium products at VIP-TRADERS.
+            </p>
+
+        </section>
+
+
+        <!-- SEARCH AND FILTERS -->
+
+        <section class="shop-toolbar">
+
+            <input
+                type="search"
+                id="shopSearch"
+                placeholder="Search products..."
+                aria-label="Search products"
+            >
+
+
+            <select
+                id="categoryFilter"
+                aria-label="Filter by category"
+            >
+<option value="all">All Categories</option>
+
+<option value="Watches">Watches</option>
+
+<option value="AirPods">AirPods</option>
+
+<option value="Couple Watches">Couple Watches</option>
+
+<option value="Ladies Watches">Ladies Watches</option>
+
+            </select>
+
+
+            <select
+                id="sortFilter"
+                aria-label="Sort products"
+            >
+
+                <option value="default">Default Sorting</option>
+
+                <option value="low-high">Price: Low to High</option>
+
+                <option value="high-low">Price: High to Low</option>
+
+                <option value="name">Name: A to Z</option>
+
+            </select>
+
+        </section>
+
+
+        <!-- RESULT COUNT -->
+
+        <div class="shop-result-info">
+
+            <p>
+                Products:
+                <strong id="resultCount">0</strong>
+            </p>
+
+            <p>VIP-TRADERS Collection</p>
+
+        </div>
+
+
+        <!-- PRODUCTS -->
+
+        <section id="shopProducts">
+
+            <div class="shop-empty">
+
+                <h3>Loading Products...</h3>
+
+                <p>Please wait.</p>
+
+            </div>
+
+        </section>
+
+
+        <div class="shop-bottom">
+
+            <a href="index.html">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <h2>VIP-<span>TRADERS</span></h2>
+                <p>
+                    Shop smart. Live better. Discover premium
+                    electronics and accessories.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="cart.html">Shopping Cart</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+          <div class="footer-contact">
+    <h3>Contact Us</h3>
+
+    <p>
+        WhatsApp:
+        <a href="https://wa.me/923322100970" target="_blank" rel="noopener noreferrer">
+            03322100970
+        </a>
+    </p>
+
+    <p>
+        WhatsApp:
+        <a href="https://wa.me/923313583376" target="_blank" rel="noopener noreferrer">
+            03313583376
+        </a>
+    </p>
+</div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 VIP-TRADERS. All Rights Reserved.</p>
+            <p>SHOP SMART • LIVE BETTER</p>
+        </div>
+
+    </footer>
+
+
+        <div class="footer-bottom">
+            <p>© 2026 VIP-TRADERS. All Rights Reserved.</p>
+            <p>SHOP SMART • LIVE BETTER</p>
+        </div>
+
+    </footer>
+
+
+    <!-- BACK TO TOP -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        ↑
+    </button>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="products-data.js"></script>
+    <script src="shop.js"></script>
+    <script src="main.js"></script>
+
+</body>
+
+</html>

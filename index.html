@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VIP-TRADERS | Premium Electronics Store</title>
+
+    <meta name="description" content="Shop premium watches, AirPods, adapters and electronics accessories at VIP-TRADERS. Cash on Delivery available.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+    <link rel="icon" href="vip-traders-logo.png" alt="VIP TRADERS Logo">
+
+
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-container">
+
+            <a href="index.html" class="brand">
+                <img
+                    src="vip-traders-logo.png" alt="VIP TRADERS Logo"
+                    alt="VIP-TRADERS Logo"
+                    class="brand-logo"
+                >
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html" class="active">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="shop.html?category=Watches">Watches</a>
+                <a href="shop.html?category=Electronics">Electronics</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <a href="cart.html" class="cart-button">
+                    <span>🛍️</span>
+                    <span>Cart</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- HERO SECTION -->
+    <main>
+
+        <section class="hero-section">
+
+            <div class="hero-content">
+
+                <span class="hero-tag">WELCOME TO VIP-TRADERS</span>
+
+                <h1>
+                    Upgrade Your Style.
+                    <span>Elevate Your Lifestyle.</span>
+                </h1>
+
+                <p>
+                    Discover premium watches, AirPods, adapters and
+                    everyday electronics accessories at amazing prices.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="shop.html" class="btn btn-primary">
+                        Explore Collection
+                    </a>
+
+                    <a href="contact.html" class="btn btn-outline">
+                        Contact Us
+                    </a>
+                </div>
+
+                <div class="hero-features">
+                    <span>✓ Premium Products</span>
+                    <span>✓ Cash on Delivery</span>
+                    <span>✓ Easy WhatsApp Orders</span>
+                </div>
+
+            </div>
+
+            <div class="hero-decoration">
+                <div class="hero-circle">
+                    <span>VIP</span>
+                    <strong>TRADERS</strong>
+                    <small>SHOP SMART • LIVE BETTER</small>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- CATEGORIES -->
+        <section class="categories-section">
+
+            <div class="section-heading">
+                <span class="section-tag">EXPLORE OUR STORE</span>
+                <h2>Shop By Category</h2>
+                <p>Find the products you love.</p>
+            </div>
+
+            <div class="category-grid">
+
+                <a href="shop.html?category=Watches" class="category-card">
+                    <span class="category-icon">⌚</span>
+                    <h3>Watches</h3>
+                    <span>Explore Collection →</span>
+                </a>
+
+                <a href="shop.html?category=AirPods" class="category-card">
+                    <span class="category-icon">🎧</span>
+                    <h3>AirPods</h3>
+                    <span>Explore Collection →</span>
+                </a>
+
+                <a href="shop.html?category=Adapters" class="category-card">
+                    <span class="category-icon">🔌</span>
+                    <h3>Adapters</h3>
+                    <span>Explore Collection →</span>
+                </a>
+
+                <a href="shop.html?category=Electronics" class="category-card">
+                    <span class="category-icon">📱</span>
+                    <h3>Electronics</h3>
+                    <span>Explore Collection →</span>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- FEATURED PRODUCTS -->
+        <section class="featured-section">
+
+            <div class="section-heading">
+                <span class="section-tag">OUR COLLECTION</span>
+                <h2>Featured Products</h2>
+                <p>Explore some of our selected products.</p>
+            </div>
+
+            <div class="product-grid" id="featuredProducts">
+
+                <div class="products-loading">
+                    Loading products...
+                </div>
+
+            </div>
+
+            <div class="section-footer">
+                <a href="shop.html" class="btn btn-primary">
+                    View All Products →
+                </a>
+            </div>
+
+        </section>
+
+
+        <!-- WHY CHOOSE US -->
+        <section class="benefits-section">
+
+            <div class="section-heading">
+                <span class="section-tag">WHY VIP-TRADERS</span>
+                <h2>A Better Shopping Experience</h2>
+            </div>
+
+            <div class="benefits-grid">
+
+                <div class="benefit-card">
+                    <span>🚚</span>
+                    <h3>Cash on Delivery</h3>
+                    <p>Pay for your order when it arrives.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span>⭐</span>
+                    <h3>Quality Products</h3>
+                    <p>Explore our carefully selected collection.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span>💬</span>
+                    <h3>WhatsApp Support</h3>
+                    <p>Contact us easily for product information.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <h2>VIP-<span>TRADERS</span></h2>
+                <p>
+                    Shop smart. Live better. Discover premium
+                    electronics and accessories.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="cart.html">Shopping Cart</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+          <div class="footer-contact">
+    <h3>Contact Us</h3>
+
+    <p>
+        WhatsApp:
+        <a href="https://wa.me/923322100970" target="_blank" rel="noopener noreferrer">
+            03322100970
+        </a>
+    </p>
+
+    <p>
+        WhatsApp:
+        <a href="https://wa.me/923313583376" target="_blank" rel="noopener noreferrer">
+            03313583376
+        </a>
+    </p>
+</div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 VIP-TRADERS. All Rights Reserved.</p>
+            <p>SHOP SMART • LIVE BETTER</p>
+        </div>
+
+    </footer>
+
+
+    <!-- BACK TO TOP -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        ↑
+    </button>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="products-data.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>

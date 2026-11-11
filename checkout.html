@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | VIP-TRADERS</title>
+
+    <meta name="description"
+        content="Complete your VIP-TRADERS order with Cash on Delivery.">
+    <link rel="icon" href="vip-traders-logo.png" alt="VIP TRADERS Logo">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .checkout-page {
+            max-width: 1150px;
+            margin: 55px auto;
+            padding: 0 20px;
+        }
+
+        .checkout-heading {
+            margin-bottom: 30px;
+        }
+
+        .checkout-heading h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .checkout-heading p {
+            color: #777;
+        }
+
+        .checkout-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 35px;
+            align-items: start;
+        }
+
+        .checkout-form-section,
+        .checkout-summary {
+            padding: 28px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+        }
+
+        .checkout-form-section h2,
+        .checkout-summary h2 {
+            font-size: 22px;
+            margin-bottom: 22px;
+        }
+
+        .checkout-form {
+            display: grid;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #d8b36a;
+        }
+
+        .form-group textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .required-star {
+            color: #d33;
+        }
+
+        .checkout-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .checkout-item h4 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .checkout-item p {
+            color: #777;
+            font-size: 13px;
+        }
+
+        .checkout-item strong {
+            white-space: nowrap;
+        }
+
+        .checkout-total-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 18px;
+            color: #555;
+        }
+
+        .checkout-grand-total {
+            padding-top: 18px;
+            margin-top: 18px;
+            border-top: 1px solid #ddd;
+            color: #111;
+            font-size: 19px;
+            font-weight: 700;
+        }
+
+        .payment-method {
+            margin-top: 25px;
+            padding: 17px;
+            border: 1px solid #e8d4a8;
+            background: #faf8f2;
+            border-radius: 8px;
+        }
+
+        .payment-method strong {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .payment-method p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        #placeOrder {
+            width: 100%;
+            margin-top: 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        #placeOrder:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .checkout-note {
+            color: #777;
+            font-size: 12px;
+            line-height: 1.6;
+            margin-top: 15px;
+        }
+
+        .checkout-back {
+            display: inline-block;
+            margin-top: 25px;
+            color: #b9852d;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 850px) {
+            .checkout-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .checkout-page {
+                margin: 30px auto;
+            }
+
+            .checkout-form-section,
+            .checkout-summary {
+                padding: 20px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-container">
+
+            <a href="index.html" class="brand">
+                <img
+                    src="vip-traders-logo.png" alt="VIP TRADERS Logo"
+                    class="brand-logo"
+                >
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html" class="active">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="shop.html?category=Watches">Watches</a>
+                <a href="shop.html?category=Electronics">Electronics</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <a href="cart.html" class="cart-button">
+                    <span>🛍️</span>
+                    <span>Cart</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- CHECKOUT -->
+
+    <main class="checkout-page">
+
+        <div class="checkout-heading">
+
+            <h1>Checkout</h1>
+
+            <p>
+                Enter your delivery details to complete your order.
+            </p>
+
+        </div>
+
+
+        <div class="checkout-layout">
+
+
+            <!-- CUSTOMER FORM -->
+
+            <section class="checkout-form-section">
+
+                <h2>Delivery Information</h2>
+
+                <form id="checkoutForm" class="checkout-form">
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+                            Full Name <span class="required-star">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Mobile Number <span class="required-star">*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="03XXXXXXXXX"
+                            autocomplete="tel"
+                            pattern="[0-9+\-\s]{10,16}"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="whatsapp">
+                            WhatsApp Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="whatsapp"
+                            name="whatsapp"
+                            placeholder="03XXXXXXXXX"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="city">
+                            City <span class="required-star">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="city"
+                            name="city"
+                            placeholder="Enter your city"
+                            autocomplete="address-level2"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="address">
+                            Complete Address
+                            <span class="required-star">*</span>
+                        </label>
+
+                        <textarea
+                            id="address"
+                            name="address"
+                            placeholder="House number, street, area and nearby landmark"
+                            autocomplete="street-address"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="notes">
+                            Additional Notes (Optional)
+                        </label>
+
+                        <textarea
+                            id="notes"
+                            name="notes"
+                            placeholder="Any additional delivery instructions?"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="payment-method">
+
+                        <strong>Cash on Delivery (COD)</strong>
+
+                        <p>
+                            Pay when your order is delivered.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        id="placeOrder"
+                        class="btn btn-primary"
+                    >
+                        Place Order on WhatsApp
+                    </button>
+
+                    <p class="checkout-note">
+                        Your order details will open in WhatsApp.
+                        Please review and send the message to confirm your order.
+                    </p>
+
+                </form>
+
+                <a href="cart.html" class="checkout-back">
+                    ← Back to Cart
+                </a>
+
+            </section>
+
+
+            <!-- ORDER SUMMARY -->
+
+            <aside class="checkout-summary">
+
+                <h2>Your Order</h2>
+
+                <div id="checkoutItems">
+
+                    <p>Loading order...</p>
+
+                </div>
+
+
+                <div class="checkout-total-row">
+
+                    <span>Subtotal</span>
+
+                    <strong id="checkoutSubtotal">
+                        Rs. 0
+                    </strong>
+
+                </div>
+
+
+                <div class="checkout-total-row">
+
+                    <span>Delivery Charges</span>
+
+                    <strong id="checkoutDelivery">
+                        To be confirmed
+                    </strong>
+
+                </div>
+
+
+                <div class="checkout-total-row checkout-grand-total">
+
+                    <span>Total</span>
+
+                    <strong id="checkoutTotal">
+                        Rs. 0
+                    </strong>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <h2>VIP-<span>TRADERS</span></h2>
+                <p>
+                    Shop smart. Live better. Discover premium
+                    electronics and accessories.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="cart.html">Shopping Cart</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+          <div class="footer-contact">
+    <h3>Contact Us</h3>
+
+    <p>
+        WhatsApp:
+        <a href="https://wa.me/923322100970" target="_blank" rel="noopener noreferrer">
+            03322100970
+        </a>
+    </p>
+
+    <p>
+        WhatsApp:
+        <a href="https://wa.me/923313583376" target="_blank" rel="noopener noreferrer">
+            03313583376
+        </a>
+    </p>
+</div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 VIP-TRADERS. All Rights Reserved.</p>
+            <p>SHOP SMART • LIVE BETTER</p>
+        </div>
+
+    </footer>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="products-data.js"></script>
+    <script src="checkout.js"></script>
+    <script src="main.js"></script>
+
+</body>
+
+</html>

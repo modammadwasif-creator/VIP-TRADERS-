@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product Details | VIP-TRADERS</title>
+
+    <meta name="description"
+        content="Explore premium watches and electronics accessories at VIP-TRADERS.">
+    <link rel="icon" href="vip-traders-logo.png" alt="VIP TRADERS Logo">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Product Page Additional Styling -->
+    <style>
+        .product-details-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .product-details-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: start;
+        }
+
+        .main-product-image-wrap {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            background: #f5f5f5;
+            aspect-ratio: 1 / 1;
+        }
+
+        .main-product-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: opacity 0.3s ease, transform 0.4s ease;
+        }
+
+        .main-product-image-wrap:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 42px;
+            height: 42px;
+            border: none;
+            border-radius: 50%;
+            background: #111;
+            color: #edbd61;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .gallery-arrow:hover {
+            background: #edbd61;
+            color: #111;
+        }
+
+        #previousImage {
+            left: 12px;
+        }
+
+        #nextImage {
+            right: 12px;
+        }
+
+        .product-thumbnails {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .product-thumbnail {
+            width: 75px;
+            height: 75px;
+            padding: 4px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .product-thumbnail.active {
+            border-color: #d8b36a;
+        }
+
+        .product-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .product-details-info {
+            padding-top: 15px;
+        }
+
+        .product-details-info h1 {
+            font-size: clamp(26px, 4vw, 38px);
+            margin: 12px 0;
+        }
+
+        .product-details-price {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .product-details-old-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 17px;
+        }
+
+        .product-details-description {
+            line-height: 1.8;
+            color: #666;
+            margin: 20px 0;
+        }
+
+        .product-quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .product-quantity-control button {
+            width: 38px;
+            height: 38px;
+            border: 1px solid #ddd;
+            background: white;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .product-quantity-control input {
+            width: 55px;
+            height: 38px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        #addToCart {
+            width: 100%;
+            max-width: 320px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .product-delivery-note {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f8f6f0;
+            border-left: 3px solid #d8b36a;
+            line-height: 1.7;
+        }
+
+        .product-breadcrumb {
+            margin-bottom: 25px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        .product-breadcrumb a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        @media (max-width: 750px) {
+            .product-details-section {
+                margin: 30px auto;
+            }
+
+            .product-details-layout {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .product-details-info {
+                padding-top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =================================
+         HEADER
+    ==========
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-container">
+
+            <a href="index.html" class="brand">
+                <img
+                    src="vip-traders-logo.png" alt="VIP TRADERS Logo"
+                    alt="VIP-TRADERS Logo"
+                    class="brand-logo"
+                >
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html" class="active">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="shop.html?category=Watches">Watches</a>
+                <a href="shop.html?category=Electronics">Electronics</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <a href="cart.html" class="cart-button">
+                    <span>🛍️</span>
+                    <span>Cart</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- =================================
+         PRODUCT DETAILS
+    ================================== -->
+
+    <main>
+
+        <section class="product-details-section">
+
+            <div class="product-breadcrumb">
+
+                <a href="index.html">Home</a>
+                /
+                <a href="shop.html">Shop</a>
+                /
+                <span>Product Details</span>
+
+            </div>
+
+
+            <div id="productDetails">
+
+                <div class="product-details-layout">
+
+                    <!-- PRODUCT IMAGES -->
+
+                    <div class="product-gallery">
+
+                        <div class="main-product-image-wrap">
+
+                            <button
+                                type="button"
+                                class="gallery-arrow"
+                                id="previousImage"
+                                aria-label="Previous image"
+                            >
+                                &#10094;
+                            </button>
+
+                            <img
+                                id="mainProductImage"
+                                src=""
+                                alt="Product Image"
+                            >
+
+                            <button
+                                type="button"
+                                class="gallery-arrow"
+                                id="nextImage"
+                                aria-label="Next image"
+                            >
+                                &#10095;
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            class="product-thumbnails"
+                            id="productThumbnails"
+                        >
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRODUCT INFORMATION -->
+
+                    <div class="product-details-info">
+
+                        <span
+                            class="product-category"
+                            id="productCategory"
+                        >
+                        </span>
+
+                        <h1 id="productName">
+                            Loading Product...
+                        </h1>
+
+                        <div class="product-details-price">
+
+                            <span
+                                class="current-price"
+                                id="productPrice"
+                            >
+                            </span>
+
+                            <span
+                                class="product-details-old-price"
+                                id="productOldPrice"
+                            >
+                            </span>
+
+                        </div>
+
+
+                        <p
+                            class="product-details-description"
+                            id="productDescription"
+                        >
+                        </p>
+
+
+                        <!-- QUANTITY -->
+
+                        <div class="product-quantity-control">
+
+                            <strong>Quantity:</strong>
+
+                            <button
+                                type="button"
+                                id="quantityMinus"
+                                aria-label="Decrease quantity"
+                            >
+                                −
+                            </button>
+
+                            <input
+                                type="number"
+                                id="productQuantity"
+                                value="1"
+                                min="1"
+                                readonly
+                            >
+
+                            <button
+                                type="button"
+                                id="quantityPlus"
+                                aria-label="Increase quantity"
+                            >
+                                +
+                            </button>
+
+                        </div>
+
+
+                        <!-- ADD TO CART -->
+
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="addToCart"
+                        >
+                            Add to Cart
+                        </button>
+
+
+                        <!-- DELIVERY INFORMATION -->
+
+                        <div class="product-delivery-note">
+
+                            <strong>VIP-TRADERS Shopping</strong>
+
+                            <p>
+                                Cash on Delivery Available.
+                                Order securely through WhatsApp.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+<!-- =================================
+     VIP-TRADERS COMPLETE FOOTER
+================================== -->
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <h2>VIP-<span>TRADERS</span></h2>
+                <p>
+                    Shop smart. Live better. Discover premium
+                    electronics and accessories.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="cart.html">Shopping Cart</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+          <div class="footer-contact">
+    <h3>Contact Us</h3>
+
+    <p>
+        WhatsApp:
+        <a href="https://wa.me/923322100970" target="_blank" rel="noopener noreferrer">
+            03322100970
+        </a>
+    </p>
+
+    <p>
+        WhatsApp:
+        <a href="https://wa.me/923313583376" target="_blank" rel="noopener noreferrer">
+            03313583376
+        </a>
+    </p>
+</div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 VIP-TRADERS. All Rights Reserved.</p>
+            <p>SHOP SMART • LIVE BETTER</p>
+        </div>
+
+    </footer>
+
+
+<!-- BACK TO TOP -->
+<button id="backToTop"
+        class="back-to-top"
+        aria-label="Back to top">
+    ↑
+</button>
+
+<script>
+    document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+</script>
+
+
+    <!-- =================================
+         JAVASCRIPT FILES
+    ================================== -->
+
+    <script src="products-data.js"></script>
+    <script src="product.js"></script>
+    <script src="main.js"></script>
+
+</body>
+
+</html>

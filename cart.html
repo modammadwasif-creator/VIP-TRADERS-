@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shopping Cart | VIP-TRADERS</title>
+    <link rel="icon" href="vip-traders-logo.png" alt="VIP TRADERS Logo">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .cart-page {
+            max-width: 1150px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .cart-page-title {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .cart-page-subtitle {
+            color: #777;
+            margin-bottom: 35px;
+        }
+
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .cart-items-container {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 120px 1fr auto;
+            gap: 20px;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            background: white;
+        }
+
+        .cart-item-image {
+            width: 120px;
+            height: 120px;
+            background: #f6f6f6;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .cart-item-details h3 {
+            margin: 8px 0;
+            font-size: 17px;
+        }
+
+        .cart-item-price {
+            font-weight: 700;
+            color: #b9852d;
+        }
+
+        .cart-quantity {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .cart-quantity button {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 18px;
+        }
+
+        .remove-cart-item {
+            background: transparent;
+            border: none;
+            color: #c0392b;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .cart-summary {
+            padding: 25px;
+            background: #faf9f6;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            position: sticky;
+            top: 100px;
+        }
+
+        .cart-summary h2 {
+            margin-bottom: 25px;
+            font-size: 22px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 18px 0;
+            color: #555;
+        }
+
+        .summary-total {
+            padding-top: 18px;
+            border-top: 1px solid #ddd;
+            font-size: 19px;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .checkout-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .clear-cart-button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 7px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 50px 20px;
+            background: #fafafa;
+            border-radius: 12px;
+            grid-column: 1 / -1;
+        }
+
+        .empty-cart h2 {
+            margin-bottom: 12px;
+        }
+
+        .empty-cart p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 850px) {
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-summary {
+                position: static;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .cart-page {
+                margin: 35px auto;
+            }
+
+            .cart-item {
+                grid-template-columns: 85px 1fr;
+                gap: 12px;
+                padding: 12px;
+            }
+
+            .cart-item-image {
+                width: 85px;
+                height: 85px;
+            }
+
+            .cart-item-actions {
+                grid-column: 2;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-container">
+
+            <a href="index.html" class="brand">
+                <img
+                    src="vip-traders-logo.png" alt="VIP TRADERS Logo"
+                    alt="VIP-TRADERS Logo"
+                    class="brand-logo"
+                >
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html" class="active">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="shop.html?category=Watches">Watches</a>
+                <a href="shop.html?category=Electronics">Electronics</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <a href="cart.html" class="cart-button">
+                    <span>🛍️</span>
+                    <span>Cart</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+    </header>
+
+    <!-- CART PAGE -->
+
+    <main class="cart-page">
+
+        <h1 class="cart-page-title">
+            Shopping Cart
+        </h1>
+
+        <p class="cart-page-subtitle">
+            Review your selected products before checkout.
+        </p>
+
+
+        <div class="cart-layout">
+
+            <!-- CART PRODUCTS -->
+
+            <section
+                class="cart-items-container"
+                id="cartItems"
+            >
+
+                <p>Loading your cart...</p>
+
+            </section>
+
+
+            <!-- CART SUMMARY -->
+
+            <aside class="cart-summary">
+
+                <h2>Order Summary</h2>
+
+                <div class="summary-row">
+
+                    <span>Items</span>
+
+                    <strong id="cartItemCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>Subtotal</span>
+
+                    <strong id="cartSubtotal">
+                        Rs. 0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row summary-total">
+
+                    <span>Total</span>
+
+                    <strong id="cartTotal">
+                        Rs. 0
+                    </strong>
+
+                </div>
+
+
+                <a
+                    href="checkout.html"
+                    class="btn btn-primary checkout-button"
+                >
+                    Proceed to Checkout
+                </a>
+
+
+                <a
+                    href="shop.html"
+                    class="btn btn-secondary checkout-button"
+                >
+                    Continue Shopping
+                </a>
+
+
+                <button
+                    type="button"
+                    id="clearCart"
+                    class="clear-cart-button"
+                >
+                    Clear Cart
+                </button>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <h2>VIP-<span>TRADERS</span></h2>
+                <p>
+                    Shop smart. Live better. Discover premium
+                    electronics and accessories.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="cart.html">Shopping Cart</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+          <div class="footer-contact">
+    <h3>Contact Us</h3>
+
+    <p>
+        WhatsApp:
+        <a href="https://wa.me/923322100970" target="_blank" rel="noopener noreferrer">
+            03322100970
+        </a>
+    </p>
+
+    <p>
+        WhatsApp:
+        <a href="https://wa.me/923313583376" target="_blank" rel="noopener noreferrer">
+            03313583376
+        </a>
+    </p>
+</div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 VIP-TRADERS. All Rights Reserved.</p>
+            <p>SHOP SMART • LIVE BETTER</p>
+        </div>
+
+    </footer>
+
+
+     
+
+    <!-- JAVASCRIPT -->
+
+    <script src="products-data.js"></script>
+    <script src="cart.js"></script>
+    <script src="main.js"></script>
+
+</body>
+
+</html>
