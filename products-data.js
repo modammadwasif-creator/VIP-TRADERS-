@@ -14,7 +14,7 @@ const VIP_PRODUCTS = [
         oldPrice: 3500,
 
         images: [
-            "product-images/Screenshot 2026-11-09 230623.png",
+            "Screenshot 2026-11-09 230623.png",
             "product-images/Screenshot 2026-11-09 230603.png",
             "product-images/Screenshot 2026-11-09 230651.png",
             "product-images/Screenshot 2026-11-09 230707.png",
