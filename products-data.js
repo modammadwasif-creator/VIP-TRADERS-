@@ -688,6 +688,41 @@ Exclusively at VIP TRADERS. ❤️
     inStock: true
 },
 
+
+
+ {
+    id: "couple-watch-003",
+    name: "Premium Centrix Design Couple Watch",
+    category: "Couple Watches",
+    price: 1600,
+    oldPrice: 1999,
+
+    images: [
+        "Screenshot 2026-11-12 171640.png",
+        "Screenshot 2026-11-12 171711.png",
+        "Screenshot 2026-11-12 171719.png",
+        "Screenshot 2026-11-12 173019.png",
+        "Screenshot 2026-11-12 171620.png"
+    ],
+
+    description: "Elegant and luxury Centrix design couple watch featuring a beautiful black dial with crystal markers, premium stainless steel chain, stylish look and water-resistant design. Available in gents and ladies sizes. Price includes box.",
+
+    badge: "PREMIUM COUPLE WATCH",
+    featured: true,
+    inStock: true
+},
+
+
+
+
+
+
+
+
+
+
+
+ 
 ];
 
 /* =========================================
