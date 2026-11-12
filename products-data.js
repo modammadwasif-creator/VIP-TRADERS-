@@ -384,19 +384,19 @@ Available at VIP TRADERS.
     oldPrice: 1600,
 
     images: [
-        "product-images/Screenshot 2026-11-11 214312.png",
-        "product-images/Screenshot 2026-11-11 214332.png",
-        "product-images/Screenshot 2026-11-11 214346.png",
-        "product-images/Screenshot 2026-11-11 214400.png",
-        "product-images/Screenshot 2026-11-11 214411.png",
-        "product-images/Screenshot 2026-11-11 214424.png",
-        "product-images/Screenshot 2026-11-11 214436.png",
-        "product-images/Screenshot 2026-11-11 214448.png",
-        "product-images/Screenshot 2026-11-11 214458.png",
-        "product-images/Screenshot 2026-11-11 214510.png",
-        "product-images/Screenshot 2026-11-11 214524.png",
-        "product-images/Screenshot 2026-11-11 214535.png",
-        "product-images/Screenshot 2026-11-11 214546.png"
+        "Screenshot 2026-11-11 214312.png",
+        "Screenshot 2026-11-11 214332.png",
+        "Screenshot 2026-11-11 214346.png",
+        "Screenshot 2026-11-11 214400.png",
+        "Screenshot 2026-11-11 214411.png",
+        "Screenshot 2026-11-11 214424.png",
+        "Screenshot 2026-11-11 214436.png",
+        "Screenshot 2026-11-11 214448.png",
+        "Screenshot 2026-11-11 214458.png",
+        "Screenshot 2026-11-11 214510.png",
+        "Screenshot 2026-11-11 214524.png",
+        "Screenshot 2026-11-11 214535.png",
+        "Screenshot 2026-11-11 214546.png"
     ],
 
 description: `
@@ -437,11 +437,11 @@ description: `
     oldPrice: 900,
 
     images: [
-        "product-images/Screenshot 2026-11-11 220741.png",
-        "product-images/Screenshot 2026-11-11 220751.png",
-        "product-images/Screenshot 2026-11-11 220812.png",
-        "product-images/Screenshot 2026-11-11 220716.png",
-        "product-images/Screenshot 2026-11-11 220729.png"
+        "Screenshot 2026-11-11 220741.png",
+        "Screenshot 2026-11-11 220751.png",
+        "Screenshot 2026-11-11 220812.png",
+        "Screenshot 2026-11-11 220716.png",
+        "Screenshot 2026-11-11 220729.png"
     ], 
 
     description: `
@@ -482,12 +482,12 @@ description: `
     oldPrice: 800,
 
     images: [
-        "product-images/Screenshot 2026-11-11 221000.png",
-        "product-images/Screenshot 2026-11-11 221010.png",
-        "product-images/Screenshot 2026-11-11 221021.png",
-        "product-images/Screenshot 2026-11-11 221032.png",
-        "product-images/Screenshot 2026-11-11 221040.png",
-        "product-images/Screenshot 2026-11-11 221052.png"
+        "Screenshot 2026-11-11 221000.png",
+        "Screenshot 2026-11-11 221010.png",
+        "Screenshot 2026-11-11 221021.png",
+        "Screenshot 2026-11-11 221032.png",
+        "Screenshot 2026-11-11 221040.png",
+        "Screenshot 2026-11-11 221052.png"
     ],
 description: `
     Introducing the TOSHI Luxury Watch – where modern style
@@ -523,9 +523,9 @@ description: `
     oldPrice: 1700,
 
     images: [
-        "product-images/Screenshot 2026-11-11 225633.png",
-        "product-images/Screenshot 2026-11-11 225648.png",
-        "product-images/Screenshot 2026-11-11 225705.png"
+        " Screenshot 2026-11-11 225633.png",
+        "Screenshot 2026-11-11 225648.png",
+        "Screenshot 2026-11-11 225705.png"
     ],
 
     description: `
@@ -559,8 +559,8 @@ description: `
     oldPrice: 2200,
 
     images: [
-        "product-images/Screenshot 2026-11-11 225818.png",
-        "product-images/Screenshot 2026-11-11 225803.png"
+        "Screenshot 2026-11-11 225818.png",
+        "Screenshot 2026-11-11 225803.png"
     ],
 
     description: `
@@ -595,9 +595,9 @@ description: `
     oldPrice: 700,
 
     images: [
-        "product-images/Screenshot 2026-11-11 230043.png",
-        "product-images/Screenshot 2026-11-11 225907.png",
-        "product-images/Screenshot 2026-11-11 230022.png"
+        "Screenshot 2026-11-11 230043.png",
+        "Screenshot 2026-11-11 225907.png",
+        "Screenshot 2026-11-11 230022.png"
     ],
 
     description: `
@@ -635,10 +635,10 @@ description: `
     oldPrice: 2950,
 
     images: [
-        "product-images/Screenshot 2026-11-11 230322.png",
-        "product-images/Screenshot 2026-11-11 230235.png",
-        "product-images/Screenshot 2026-11-11 230256.png",
-        "product-images/Screenshot 2026-11-11 230309.png"
+        "Screenshot 2026-11-11 230322.png",
+        "Screenshot 2026-11-11 230235.png",
+        "Screenshot 2026-11-11 230256.png",
+        "Screenshot 2026-11-11 230309.png"
     ],
 
     description: `
@@ -679,10 +679,10 @@ description: `
     oldPrice: 3200,
 
     images: [
-        "product-images/Screenshot 2026-11-11 230123.png",
-        "product-images/Screenshot 2026-11-11 230137.png",
-        "product-images/Screenshot 2026-11-11 230153.png",
-        "product-images/Screenshot 2026-11-11 230207.png"
+        "Screenshot 2026-11-11 230123.png",
+        "Screenshot 2026-11-11 230137.png",
+        "Screenshot 2026-11-11 230153.png",
+        "Screenshot 2026-11-11 230207.png"
     ],
 
     description: `
@@ -721,12 +721,12 @@ description: `
     oldPrice: 1999,
 
     images: [
-        "product-images/Screenshot 2026-11-12 000921.png",
-        "product-images/Screenshot 2026-11-12 000935.png",
-        "product-images/Screenshot 2026-11-12 000951.png",
-        "product-images/Screenshot 2026-11-12 001007.png",
-        "product-images/Screenshot 2026-11-12 001021.png",
-        "product-images/Screenshot 2026-11-12 000758.png"
+        "Screenshot 2026-11-12 000921.png",
+        "Screenshot 2026-11-12 000935.png",
+        "Screenshot 2026-11-12 000951.png",
+        "Screenshot 2026-11-12 001007.png",
+        "Screenshot 2026-11-12 001021.png",
+        "Screenshot 2026-11-12 000758.png"
     ],
 
     description: `
@@ -761,11 +761,11 @@ description: `
     oldPrice: 2600,
 
     images: [
-        "product-images/Screenshot 2026-11-12 002205.png",
-        "product-images/Screenshot 2026-11-12 002217.png",
-        "product-images/Screenshot 2026-11-12 002129.png",
-        "product-images/Screenshot 2026-11-12 002142.png",
-        "product-images/Screenshot 2026-11-12 002153.png"
+        "Screenshot 2026-11-12 002205.png",
+        "Screenshot 2026-11-12 002217.png",
+        "Screenshot 2026-11-12 002129.png",
+        "Screenshot 2026-11-12 002142.png",
+        "Screenshot 2026-11-12 002153.png"
     ],
 
     description: `
