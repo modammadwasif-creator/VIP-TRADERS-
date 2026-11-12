@@ -15,10 +15,10 @@ const VIP_PRODUCTS = [
 
         images: [
             "Screenshot 2026-11-09 230623.png",
-            "product-images/Screenshot 2026-11-09 230603.png",
-            "product-images/Screenshot 2026-11-09 230651.png",
-            "product-images/Screenshot 2026-11-09 230707.png",
-            "product-images/Screenshot 2026-11-09 230722.png"
+            "Screenshot 2026-11-09 230603.png",
+            "Screenshot 2026-11-09 230651.png",
+            "Screenshot 2026-11-09 230707.png",
+            "Screenshot 2026-11-09 230722.png"
         ],
 
         description: `Experience timeless style with the SKMEI Original Model 9232, designed for men who appreciate elegance and everyday functionality.
@@ -62,10 +62,10 @@ Available at VIP-TRADERS.`,
         oldPrice: 1500,
 
         images: [
-            "product-images/Screenshot 2026-11-10 004453.png",
-            "product-images/Screenshot 2026-11-10 004551.png",
-            "product-images/Screenshot 2026-11-10 004749.png",
-            "product-images/Screenshot 2026-11-10 004802.png"
+            "Screenshot 2026-11-10 004453.png",
+            "Screenshot 2026-11-10 004551.png",
+            "Screenshot 2026-11-10 004749.png",
+            "Screenshot 2026-11-10 004802.png"
         ],
 
         description: `Enjoy your favourite music with these Premium Wireless Earbuds, designed for an enjoyable everyday listening experience.
@@ -103,22 +103,22 @@ Order now from VIP-TRADERS.`,
         price: 2150,
         oldPrice: 2990,
 images: [
-    "product-images/Screenshot 2026-11-11 203601.png",
-    "product-images/Screenshot 2026-11-11 203614.png",
-    "product-images/Screenshot 2026-11-11 203711.png",
-    "product-images/Screenshot 2026-11-11 203723.png",
-    "product-images/Screenshot 2026-11-11 204151.png",
-    "product-images/Screenshot 2026-11-11 204206.png",
-    "product-images/Screenshot 2026-11-11 204217.png",
-    "product-images/Screenshot 2026-11-11 204228.png",
-    "product-images/Screenshot 2026-11-11 204238.png",
-    "product-images/Screenshot 2026-11-11 204254.png",
-    "product-images/Screenshot 2026-11-11 204305.png",
-    "product-images/Screenshot 2026-11-11 204318.png",
+    "Screenshot 2026-11-11 203601.png",
+    "Screenshot 2026-11-11 203614.png",
+    "Screenshot 2026-11-11 203711.png",
+    "Screenshot 2026-11-11 203723.png",
+    "Screenshot 2026-11-11 204151.png",
+    "Screenshot 2026-11-11 204206.png",
+    "Screenshot 2026-11-11 204217.png",
+    "Screenshot 2026-11-11 204228.png",
+    "Screenshot 2026-11-11 204238.png",
+    "Screenshot 2026-11-11 204254.png",
+    "Screenshot 2026-11-11 204305.png",
+    "Screenshot 2026-11-11 204318.png",
 
     // LAST TWO OLD IMAGES — UNCHANGED
-    "product-images/Screenshot 2026-11-09 201210.png",
-    "product-images/Screenshot 2026-11-09 201233.png"
+    'Screenshot 2026-11-09 201210.png",
+    "Screenshot 2026-11-09 201233.png"
 ],
 
         description: "A luxury-inspired men's watch featuring a rotating bezel, working date display and stainless steel chain. Designed with attractive colour options and premium finishing for an elegant everyday look.",
@@ -139,9 +139,9 @@ images: [
         oldPrice: 2500,
 
         images: [
-            "product-images/Screenshot 2026-11-09 233525.png",
-            "product-images/Screenshot 2026-11-09 233406.png",
-            "product-images/Screenshot 2026-11-09 233457.png"
+            "Screenshot 2026-11-09 233525.png",
+            "Screenshot 2026-11-09 233406.png",
+            "Screenshot 2026-11-09 233457.png"
         ],
 
         description: `Experience smart style and everyday convenience with the I20 Ultra Max Suit 7-in-1 Smart Watch Bundle.
@@ -181,14 +181,14 @@ Available at VIP-TRADERS.`,
         oldPrice: 3200,
 
         images: [
-            "product-images/Screenshot 2026-11-10 164608.png",
-            "product-images/Screenshot 2026-11-10 164631.png",
-            "product-images/Screenshot 2026-11-10 170706.png",
-            "product-images/Screenshot 2026-11-10 170724.png",
-            "product-images/Screenshot 2026-11-10 170740.png",
-            "product-images/Screenshot 2026-11-10 170810.png",
-            "product-images/Screenshot 2026-11-10 170827.png",
-            "product-images/Screenshot 2026-11-10 170842.png"
+            "Screenshot 2026-11-10 164608.png",
+            "Screenshot 2026-11-10 164631.png",
+            "Screenshot 2026-11-10 170706.png",
+            "Screenshot 2026-11-10 170724.png",
+            "Screenshot 2026-11-10 170740.png",
+            "Screenshot 2026-11-10 170810.png",
+            "Screenshot 2026-11-10 170827.png",
+            "Screenshot 2026-11-10 170842.png"
         ],
 
         description: `
@@ -221,7 +221,7 @@ Available at VIP TRADERS.
         oldPrice: 1000,
 
         images: [
-            "product-images/Screenshot 2026-11-10 173321.png"
+          "Screenshot 2026-11-10 173321.png"
         ],
 
         description: `
@@ -252,7 +252,7 @@ Available at VIP TRADERS.
         oldPrice: 1500,
 
         images: [
-            "product-images/Screenshot 2026-11-10 173342.png"
+            "Screenshot 2026-11-10 173342.png"
         ],
 
         description: `
@@ -283,13 +283,13 @@ Available at VIP TRADERS.
         oldPrice: 2600,
 
         images: [
-            "product-images/Screenshot 2026-11-10 175538.png",
-            "product-images/Screenshot 2026-11-10 175611.png",
-            "product-images/Screenshot 2026-11-10 175620.png",
-            "product-images/Screenshot 2026-11-10 175630.png",
-            "product-images/Screenshot 2026-11-10 175640.png",
-            "product-images/Screenshot 2026-11-10 175552.png",
-            "product-images/Screenshot 2026-11-10 175603.png"
+            "Screenshot 2026-11-10 175538.png",
+            "Screenshot 2026-11-10 175611.png",
+            "Screenshot 2026-11-10 175620.png",
+            "Screenshot 2026-11-10 175630.png",
+            "Screenshot 2026-11-10 175640.png",
+            "Screenshot 2026-11-10 175552.png",
+            "Screenshot 2026-11-10 175603.png"
         ],
 
         description: `
@@ -326,13 +326,13 @@ Available at VIP TRADERS.
         oldPrice: 2600,
 
         images: [
-            "product-images/Screenshot 2026-11-10 232546.png",
-            "product-images/Screenshot 2026-11-10 232556.png",
-            "product-images/Screenshot 2026-11-10 232604.png",
-            "product-images/Screenshot 2026-11-10 232611.png",
-            "product-images/Screenshot 2026-11-10 232620.png",
-            "product-images/Screenshot 2026-11-10 232634.png",
-            "product-images/Screenshot 2026-11-10 232642.png"
+            "Screenshot 2026-11-10 232546.png",
+            "Screenshot 2026-11-10 232556.png",
+            "Screenshot 2026-11-10 232604.png",
+            "Screenshot 2026-11-10 232611.png",
+            "Screenshot 2026-11-10 232620.png",
+            "Screenshot 2026-11-10 232634.png",
+            "Screenshot 2026-11-10 232642.png"
         ],
 
         description: "SUNLIFEX Original Luxury Ladies Watch featuring a premium steel chain, good finishing and attractive new colours. A stylish luxury look at an affordable price. Available at VIP-TRADERS for Rs. 2,100 only.",
@@ -353,11 +353,11 @@ Available at VIP TRADERS.
         oldPrice: 2300,
 
         images: [
-            "product-images/Screenshot 2026-11-11 002114.png",
-            "product-images/Screenshot 2026-11-11 002129.png",
-            "product-images/Screenshot 2026-11-11 002142.png",
-            "product-images/Screenshot 2026-11-11 002158.png",
-            "product-images/Screenshot 2026-11-11 002222.png"
+            "Screenshot 2026-11-11 002114.png",
+            "Screenshot 2026-11-11 002129.png",
+            "Screenshot 2026-11-11 002142.png",
+            "Screenshot 2026-11-11 002158.png",
+            "Screenshot 2026-11-11 002222.png"
         ],
 
         description: "TOMI Original Luxury Gents Watch featuring a stylish Roman dial, premium leather strap, working date display and attractive new arrival colours. Comes with the TOMI Original box. Price Rs. 2,000 only. Available at VIP-TRADERS.",
