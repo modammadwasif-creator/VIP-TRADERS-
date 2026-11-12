@@ -1,4 +1,4 @@
- /* =========================================
+  /* =========================================
    VIP-TRADERS - PRODUCT DATABASE
 ========================================= */
 
@@ -117,7 +117,7 @@ images: [
     "Screenshot 2026-11-11 204318.png",
 
     // LAST TWO OLD IMAGES — UNCHANGED
-    'Screenshot 2026-11-09 201210.png",
+    "Screenshot 2026-11-09 201210.png",
     "Screenshot 2026-11-09 201233.png"
 ],
 
@@ -522,8 +522,7 @@ description: `
     price: 1100,
     oldPrice: 1700,
 
-    images: [
-        " Screenshot 2026-11-11 225633.png",
+    images: ["Screenshot 2026-11-11 225633.png",
         "Screenshot 2026-11-11 225648.png",
         "Screenshot 2026-11-11 225705.png"
     ],
