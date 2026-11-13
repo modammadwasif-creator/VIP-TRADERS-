@@ -736,7 +736,30 @@ Exclusively at VIP TRADERS. ❤️
     inStock: true
 },
 
+{
+    id: "couple-watch-004",
+    name: "Luxury Diamond Cut Leather Strap Couple Watch",
+    category: "Couple Watches",
+    price: 1350,
+    oldPrice: 1899,
 
+    images: [
+        "Screenshot 2026-11-13 211945.png",
+        "Screenshot 2026-11-13 211807.png",
+        "Screenshot 2026-11-13 211834.png",
+        "Screenshot 2026-11-13 211846.png",
+        "Screenshot 2026-11-13 211910.png",
+        "Screenshot 2026-11-13 211921.png",
+        "Screenshot 2026-11-13 211930.png",
+        "Screenshot 2026-11-13 211937.png"
+    ],
+
+    description: "New Luxury Couple Pair Watch featuring premium leather straps, diamond-cut design and an elegant luxury look. Available in new attractive colours.",
+
+    badge: "NEW COUPLE",
+    featured: true,
+    inStock: true
+},
 
  
 ];
