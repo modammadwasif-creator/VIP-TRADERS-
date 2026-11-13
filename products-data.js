@@ -721,6 +721,7 @@ Exclusively at VIP TRADERS. ❤️
     name: "TOMI ORIGINAL T-307 Stainless Steel Watch",
     category: "Watches",
     price: 2700,
+    oldPrice: 3100,
 
     images: [
         "Screenshot 2026-11-13 205807.png",
