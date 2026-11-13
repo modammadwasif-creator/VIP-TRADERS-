@@ -716,7 +716,26 @@ Exclusively at VIP TRADERS. ❤️
 
 
 
+{
+    id: "tomi-original-t307",
+    name: "TOMI ORIGINAL T-307 Stainless Steel Watch",
+    category: "Watches",
+    price: 2700,
 
+    images: [
+        "Screenshot 2026-11-13 205807.png",
+        "Screenshot 2026-11-13 205642.png",
+        "Screenshot 2026-11-13 205702.png",
+        "Screenshot 2026-11-13 205718.png",
+        "Screenshot 2026-11-13 205749.png"
+    ],
+
+    description: "TOMI ORIGINAL Model T-307 featuring Quartz Movement, premium stainless steel chain strap and elegant dial with sleek finishing. Suitable for daily wear and light splashes. Designed for men with a stylish business, casual, formal and luxury look. Comes with TOMI ORIGINAL branded box.",
+
+    badge: "TOMI ORIGINAL",
+    featured: true,
+    inStock: true
+},
 
 
 
