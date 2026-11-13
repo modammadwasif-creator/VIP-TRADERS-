@@ -714,9 +714,7 @@ Exclusively at VIP TRADERS. ❤️
 
 
 
-
-
-{
+ {
     id: "watch-014",
     name: "TOMI ORIGINAL T-307 Stainless Steel Watch",
     category: "Watches",
@@ -737,8 +735,6 @@ Exclusively at VIP TRADERS. ❤️
     featured: true,
     inStock: true
 },
-
-
 
 
 
