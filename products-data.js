@@ -668,19 +668,19 @@ Exclusively at VIP TRADERS. ❤️
     id: "watch-013",
     name: "SKMEI 1389 Premium Digital + Analog Watch",
     category: "Watches",
-    price: 3200,
+  price: 2800,
+oldPrice: 3200,
 
-    variants: [
-        {
-            name: "Silver & Black",
-            price: 2800
-        },
-        {
-            name: "Golden",
-            price: 2900
-        }
-    ],
-
+variants: [
+    {
+        name: "Silver & Black",
+        price: 2800
+    },
+    {
+        name: "Golden",
+        price: 2900
+    }
+],
     images: [
         "Screenshot 2026-11-12 164517.png",
         "Screenshot 2026-11-12 164533.png",
