@@ -69,17 +69,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // =====================================
-    // 4. PRODUCT INFORMATION
-    // =====================================
 
-    if (productName) {
-        productName.textContent = product.name;
-    }
+// =====================================
+// 4. PRODUCT INFORMATION
+// =====================================
 
-    if (productCategory) {
-        productCategory.textContent = product.category;
-    }
+if (productName) {
+    productName.textContent = product.name;
+}
+
+if (productCategory) {
+    productCategory.textContent = product.category;
+}
+
 if (productPrice) {
 
     if (product.variants && product.variants.length > 0) {
@@ -96,18 +98,21 @@ if (productPrice) {
         productPrice.textContent = formatPrice(product.price);
 
     }
-}    if (productOldPrice) {
+}
 
-        if (product.oldPrice > product.price && product.price > 0) {
-            productOldPrice.textContent = formatPrice(product.oldPrice);
-        } else {
-            productOldPrice.style.display = "none";
-        }
-    }
+if (productOldPrice) {
 
-    if (productDescription) {
-        productDescription.textContent = product.description;
+    if (product.oldPrice > product.price && product.price > 0) {
+        productOldPrice.textContent = formatPrice(product.oldPrice);
+    } else {
+        productOldPrice.style.display = "none";
     }
+}
+
+if (productDescription) {
+    productDescription.textContent = product.description;
+}
+
 
 
     // =====================================
