@@ -561,54 +561,56 @@ Exclusively at VIP TRADERS. ❤️
     },
 
     // 18. MATTURI ORIGINAL - STAINLESS STEEL CHAIN
-    {
-        id: "watch-012",
-        name: "MATTURI ORIGINAL Stainless Steel Watch",
-        category: "Watches",
-price: 2800,
-oldPrice: 3200,
+  {
+    id: "watch-013",
+    name: "SKMEI 1389 Premium Digital + Analog Watch",
+    category: "Watches",
 
-variants: [
-    {
-        name: "Silver & Black",
-        price: 2800
-    },
-    {
-        name: "Golden",
-        price: 2900
-    }
+    price: 2800,
+    oldPrice: 3200,
 
-],
-        images: [
-            "Screenshot 2026-11-11 230123.png",
-            "Screenshot 2026-11-11 230137.png",
-            "Screenshot 2026-11-11 230153.png",
-            "Screenshot 2026-11-11 230207.png"
-        ],
-        description: `
-Introducing the MATTURI ORIGINAL Stainless Steel Watch.
+    variants: [
+        {
+            name: "Silver & Black",
+            price: 2800
+        },
+        {
+            name: "Golden",
+            price: 2900
+        }
+    ],
 
-A stylish blend of modern functionality and luxury design, created for men who appreciate a bold and sophisticated appearance.
+    images: [
+        "Screenshot 2026-11-12 164517.png",
+        "Screenshot 2026-11-12 164533.png",
+        "Screenshot 2026-11-12 164304.png",
+        "Screenshot 2026-11-12 164328.png",
+        "Screenshot 2026-11-12 164342.png",
+        "Screenshot 2026-11-12 164356.png",
+        "Screenshot 2026-11-12 164410.png",
+        "Screenshot 2026-11-12 164439.png",
+        "Screenshot 2026-11-12 164452.png",
+        "Screenshot 2026-11-12 164507.png"
+    ],
 
-✦ MATTURI ORIGINAL
-✦ Dual Time Display
-✦ Stopwatch Function
-✦ Alarm Function
-✦ Day & Date Display
-✦ Waterproof
-✦ Stainless Steel Chain
-✦ Attractive Colour Options
-✦ Premium Gents Wear Style
+    description: "SKMEI 1389 Premium Digital + Analog Watch. A stylish luxury watch featuring digital and analog display, premium stainless steel chain, dual time, chronograph, alarm, EL backlight, date and day display, 12/24H format and 30M water resistance. Available in Silver & Black and Golden colours.",
 
-Make a statement with MATTURI ORIGINAL.
+    features: [
+        "Digital + Analog Display",
+        "Premium Stainless Steel Chain",
+        "Dual Time Display",
+        "1/100 Chronograph",
+        "Alarm Function",
+        "EL Backlight",
+        "Date and Day Display",
+        "12/24 Hour Format",
+        "30M Water Resistance"
+    ],
 
-Exclusively at VIP TRADERS. ❤️
-        `,
-        badge: "New Arrival",
-        featured: true,
-        inStock: true
-    },
-
+    badge: "NEW ARRIVAL",
+    featured: true,
+    inStock: true
+},
     // 19. MH COUPLE WATCHES
     {
         id: "couple-watch-001",
