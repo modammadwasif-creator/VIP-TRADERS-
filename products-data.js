@@ -664,23 +664,24 @@ Exclusively at VIP TRADERS. ❤️
         badge: "New Arrival",
         featured: true,
         inStock: true
-    },{
+    },
+{
     id: "watch-013",
     name: "SKMEI 1389 Premium Digital + Analog Watch",
     category: "Watches",
-  price: 2800,
-oldPrice: 3200,
 
-variants: [
-    {
-        name: "Silver & Black",
-        price: 2800
-    },
-    {
-        name: "Golden",
-        price: 2900
-    }
-],
+    price: 3200,
+    oldPrice: 3200,
+
+    variants: [
+        {
+            name: "Silver & Black – Rs. 2,800"
+        },
+        {
+            name: "Golden – Rs. 2,900"
+        }
+    ],
+
     images: [
         "Screenshot 2026-11-12 164517.png",
         "Screenshot 2026-11-12 164533.png",
@@ -694,12 +695,26 @@ variants: [
         "Screenshot 2026-11-12 164507.png"
     ],
 
-    description: "Premium SKMEI 1389 Digital + Analog Watch featuring stainless steel bracelet, dual time, 1/100 chronograph, alarm, EL light, date and day display, 12/24H format and 30M water resistance. Available in Silver & Black and Golden colors.",
+    description: "SKMEI 1389 Premium Digital + Analog Watch. A stylish and attractive luxury watch featuring a combination of digital and analog display. Designed with a premium stainless steel chain and elegant dial. Perfect for daily wear, casual outfits and formal occasions.",
+
+    features: [
+        "Digital + Analog Display",
+        "Premium Stainless Steel Chain",
+        "Dual Time Display",
+        "1/100 Chronograph",
+        "Alarm Function",
+        "EL Backlight",
+        "Date and Day Display",
+        "12/24 Hour Format",
+        "30M Water Resistance",
+        "Available in Silver & Black and Golden Colours"
+    ],
 
     badge: "NEW ARRIVAL",
     featured: true,
     inStock: true
 },
+
 
 
  {
