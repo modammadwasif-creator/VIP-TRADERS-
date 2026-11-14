@@ -565,8 +565,19 @@ Exclusively at VIP TRADERS. ❤️
         id: "watch-012",
         name: "MATTURI ORIGINAL Stainless Steel Watch",
         category: "Watches",
-        price: 2800,
-        oldPrice: 3200,
+price: 2800,
+oldPrice: 3200,
+
+variants: [
+    {
+        name: "Silver & Black",
+        price: 2800
+    },
+    {
+        name: "Golden",
+        price: 2900
+    }
+],
         images: [
             "Screenshot 2026-11-11 230123.png",
             "Screenshot 2026-11-11 230137.png",
