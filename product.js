@@ -81,23 +81,8 @@ document.addEventListener("DOMContentLoaded", function () {
         productCategory.textContent = product.category;
     }
 if (productPrice) {
-
-    if (product.variants && product.variants.length > 0) {
-
-        productPrice.innerHTML = product.variants.map(variant => `
-            <div class="variant-price">
-                <span>${variant.name}</span>
-                <strong>${formatPrice(variant.price)}</strong>
-            </div>
-        `).join("");
-
-    } else {
-
-        productPrice.textContent = formatPrice(product.price);
-
-    }
-},
-    if (productOldPrice) {
+    productPrice.textContent = formatPrice(product.price);
+}    if (productOldPrice) {
 
         if (product.oldPrice > product.price && product.price > 0) {
             productOldPrice.textContent = formatPrice(product.oldPrice);
