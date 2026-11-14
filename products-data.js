@@ -664,7 +664,7 @@ Exclusively at VIP TRADERS. ❤️
         badge: "New Arrival",
         featured: true,
         inStock: true
-    },Q{
+    },{
     id: "watch-013",
     name: "SKMEI 1389 Premium Digital + Analog Watch",
     category: "Watches",
