@@ -69,49 +69,35 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    // =====================================
+    // 4. PRODUCT INFORMATION
+    // =====================================
 
-// =====================================
-// 4. PRODUCT INFORMATION
-// =====================================
+    if (productName) {
+        productName.textContent = product.name;
+    }
 
-if (productName) {
-    productName.textContent = product.name;
-}
+    if (productCategory) {
+        productCategory.textContent = product.category;
+    }
 
-if (productCategory) {
-    productCategory.textContent = product.category;
-}
-
-if (productPrice) {
-
-    if (product.variants && product.variants.length > 0) {
-
-        productPrice.innerHTML = product.variants.map(variant => `
-            <div class="variant-price">
-                <span>${variant.name}</span>
-                <strong>${formatPrice(variant.price)}</strong>
-            </div>
-        `).join("");
-
-    } else {
-
+    if (productPrice) {
         productPrice.textContent = formatPrice(product.price);
-
     }
-}
 
-if (productOldPrice) {
+    if (productOldPrice) {
 
-    if (product.oldPrice > product.price && product.price > 0) {
-        productOldPrice.textContent = formatPrice(product.oldPrice);
-    } else {
-        productOldPrice.style.display = "none";
+        if (product.oldPrice > product.price && product.price > 0) {
+            productOldPrice.textContent = formatPrice(product.oldPrice);
+        } else {
+            productOldPrice.style.display = "none";
+        }
     }
-}
 
-if (productDescription) {
-    productDescription.textContent = product.description;
-}
+    if (productDescription) {
+        productDescription.textContent = product.description;
+    }
+
 
 
 
