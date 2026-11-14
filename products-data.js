@@ -568,17 +568,7 @@ Exclusively at VIP TRADERS. ❤️
 
     price: 2800,
     oldPrice: 3200,
-
-    variants: [
-        {
-            name: "Silver & Black",
-            price: 2800
-        },
-        {
-            name: "Golden",
-            price: 2900
-        }
-    ],
+     ],
 
     images: [
         "Screenshot 2026-11-12 164517.png",
