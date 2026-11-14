@@ -96,7 +96,7 @@ if (productPrice) {
         productPrice.textContent = formatPrice(product.price);
 
     }
-}
+},
     if (productOldPrice) {
 
         if (product.oldPrice > product.price && product.price > 0) {
