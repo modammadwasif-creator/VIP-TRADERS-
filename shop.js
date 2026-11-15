@@ -1,9 +1,9 @@
-/* =========================================
-   VIP-TRADERS - SHOP JAVASCRIPT
+  /* =========================================
+   VIP-TRADERS - SHOP
+   Search, category, sorting + Admin Picture ID filter
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
-
     const productGrid = document.querySelector("#shopProducts");
     const searchInput = document.querySelector("#shopSearch");
     const categoryFilter = document.querySelector("#categoryFilter");
@@ -12,32 +12,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!productGrid) return;
 
-    let filteredProducts = [...VIP_PRODUCTS];
+    // Change this value before publishing.
+    // Static-site passwords are visible in source code.
+    const ADMIN_FILTER_PASSWORD = "HY";
 
-    // =====================================
-    // PRICE FORMAT
-    // =====================================
-
-    function formatPrice(price) {
-        if (!price || price <= 0) {
-            return "Price coming soon";
-        }
-
-        return "Rs. " + Number(price).toLocaleString("en-PK");
+    function escapeHTML(value) {
+        return String(value ?? "").replace(/[&<>"']/g, c => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        })[c]);
     }
 
-    // =====================================
-    // PRODUCT CARD
-    // =====================================
+    function formatPrice(price) {
+        const amount = Number(price || 0);
+
+        return amount > 0
+            ? "Rs. " + amount.toLocaleString("en-PK")
+            : "Price coming soon";
+    }
+
+    function cleanImage(image) {
+        return typeof vipNormalizeImagePath === "function"
+            ? vipNormalizeImagePath(image)
+            : String(image || "");
+    }
 
     function createProductCard(product) {
-
-        const image = product.images && product.images.length
-            ? product.images[0]
-            : "";
+        const image = cleanImage(product.images?.[0] || "");
 
         const oldPrice =
-            product.oldPrice > product.price && product.price > 0
+            Number(product.oldPrice) > Number(product.price) &&
+            Number(product.price) > 0
                 ? `<span class="old-price">${formatPrice(product.oldPrice)}</span>`
                 : "";
 
@@ -48,52 +56,46 @@ document.addEventListener("DOMContentLoaded", function () {
                     href="product.html?id=${encodeURIComponent(product.id)}"
                     class="product-image-wrap"
                 >
-
-                    ${product.badge
-                        ? `<span class="product-badge">${product.badge}</span>`
-                        : ""
+                    ${
+                        product.badge
+                            ? `<span class="product-badge">${escapeHTML(product.badge)}</span>`
+                            : ""
                     }
 
                     <img
-                        src="${image}"
-                        alt="${product.name}"
+                        src="${escapeHTML(image)}"
+                        alt="${escapeHTML(product.name)}"
                         loading="lazy"
-                        onerror="this.style.display='none';"
+                        onerror="this.style.display='none'"
                     >
-
                 </a>
 
                 <div class="product-info">
 
                     <span class="product-category">
-                        ${product.category}
+                        ${escapeHTML(product.category || "")}
                     </span>
 
                     <h3>
                         <a href="product.html?id=${encodeURIComponent(product.id)}">
-                            ${product.name}
+                            ${escapeHTML(product.name)}
                         </a>
                     </h3>
 
                     <div class="product-price">
-
                         <span class="current-price">
                             ${formatPrice(product.price)}
                         </span>
-
                         ${oldPrice}
-
                     </div>
 
                     <div class="product-card-actions">
-
                         <a
                             href="product.html?id=${encodeURIComponent(product.id)}"
                             class="btn btn-primary"
                         >
                             View Product
                         </a>
-
                     </div>
 
                 </div>
@@ -102,143 +104,206 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
     }
 
-    // =====================================
-    // DISPLAY PRODUCTS
-    // =====================================
+    let filteredProducts = [];
 
     function displayProducts(products) {
-
-        if (products.length === 0) {
-
-            productGrid.innerHTML = `
-                <div class="no-products">
+        productGrid.innerHTML = products.length
+            ? products.map(createProductCard).join("")
+            : `
+                <div class="shop-empty">
                     <h3>No Products Found</h3>
                     <p>Try another search or category.</p>
                 </div>
             `;
 
-        } else {
-
-            productGrid.innerHTML = products
-                .map(product => createProductCard(product))
-                .join("");
-
-        }
-
         if (resultCount) {
-            resultCount.textContent =
-                `${products.length} Products Found`;
+            resultCount.textContent = String(products.length);
         }
     }
 
-    // =====================================
-    // SEARCH
-    // =====================================
+    function applySorting() {
+        const sort = sortFilter?.value || "default";
+        const sorted = [...filteredProducts];
+
+        if (sort === "low-high") {
+            sorted.sort(
+                (a, b) => Number(a.price || 0) - Number(b.price || 0)
+            );
+        } else if (sort === "high-low") {
+            sorted.sort(
+                (a, b) => Number(b.price || 0) - Number(a.price || 0)
+            );
+        } else if (sort === "name") {
+            sorted.sort(
+                (a, b) => String(a.name).localeCompare(String(b.name))
+            );
+        }
+
+        displayProducts(sorted);
+    }
 
     function applyFilters() {
+        const search = String(searchInput?.value || "")
+            .trim()
+            .toLowerCase();
 
-        const searchText = searchInput
-            ? searchInput.value.trim().toLowerCase()
-            : "";
+        const category = String(categoryFilter?.value || "all")
+            .toLowerCase();
 
-        const selectedCategory = categoryFilter
-            ? categoryFilter.value
-            : "all";
+        const source =
+            typeof VIP_PRODUCTS !== "undefined" && Array.isArray(VIP_PRODUCTS)
+                ? VIP_PRODUCTS
+                : [];
 
-        filteredProducts = VIP_PRODUCTS.filter(product => {
+        filteredProducts = source.filter(function (product) {
+            const searchable = [
+                product.name,
+                product.category,
+                product.description
+            ].map(value => String(value || "").toLowerCase()).join(" ");
 
-            const matchesSearch =
-                product.name.toLowerCase().includes(searchText) ||
-                product.category.toLowerCase().includes(searchText) ||
-                product.description.toLowerCase().includes(searchText);
+            const matchesSearch = searchable.includes(search);
 
             const matchesCategory =
-                selectedCategory === "all" ||
-                product.category.toLowerCase() ===
-                selectedCategory.toLowerCase();
+                category === "all" ||
+                String(product.category || "").toLowerCase() === category;
 
-            return product.inStock && matchesSearch && matchesCategory;
-
+            return product.inStock !== false &&
+                matchesSearch &&
+                matchesCategory;
         });
 
         applySorting();
     }
 
-    // =====================================
-    // SORTING
-    // =====================================
+    searchInput?.addEventListener("input", applyFilters);
+    categoryFilter?.addEventListener("change", applyFilters);
+    sortFilter?.addEventListener("change", applySorting);
 
-    function applySorting() {
-
-        const sortValue = sortFilter
-            ? sortFilter.value
-            : "default";
-
-        const sortedProducts = [...filteredProducts];
-
-        if (sortValue === "low-high") {
-
-            sortedProducts.sort(
-                (a, b) => a.price - b.price
-            );
-
-        } else if (sortValue === "high-low") {
-
-            sortedProducts.sort(
-                (a, b) => b.price - a.price
-            );
-
-        } else if (sortValue === "name") {
-
-            sortedProducts.sort(
-                (a, b) => a.name.localeCompare(b.name)
-            );
-
-        }
-
-        displayProducts(sortedProducts);
-    }
-
-    // =====================================
-    // EVENT LISTENERS
-    // =====================================
-
-    if (searchInput) {
-        searchInput.addEventListener("input", applyFilters);
-    }
-
-    if (categoryFilter) {
-        categoryFilter.addEventListener("change", applyFilters);
-    }
-
-    if (sortFilter) {
-        sortFilter.addEventListener("change", applySorting);
-    }
-
-    // =====================================
-    // URL CATEGORY
-    // =====================================
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const categoryFromURL = urlParams.get("category");
+    const params = new URLSearchParams(window.location.search);
+    const categoryFromURL = params.get("category");
 
     if (categoryFromURL && categoryFilter) {
+        const match = Array.from(categoryFilter.options).find(
+            option =>
+                option.value.toLowerCase() === categoryFromURL.toLowerCase()
+        );
 
-        const matchingOption = Array.from(categoryFilter.options)
-            .find(option =>
-                option.value.toLowerCase() ===
-                categoryFromURL.toLowerCase()
-            );
-
-        if (matchingOption) {
-            categoryFilter.value = matchingOption.value;
+        if (match) {
+            categoryFilter.value = match.value;
         }
     }
 
     // =====================================
-    // INITIAL LOAD
+    // ADMIN PICTURE ID FILTER
     // =====================================
 
-    applyFilters();
+    const adminButton =
+        document.querySelector("#adminImageFilterButton");
 
+    const adminPanel =
+        document.querySelector("#adminImageFilterPanel");
+
+    const pictureInput =
+        document.querySelector("#pictureIdInput");
+
+    const pictureFindButton =
+        document.querySelector("#pictureIdFindButton");
+
+    const adminResult =
+        document.querySelector("#adminImageResult");
+
+    if (adminButton && adminPanel) {
+        adminButton.addEventListener("click", function () {
+            const enteredPassword =
+                window.prompt("Enter Admin Password:");
+
+            if (enteredPassword === null) return;
+
+            if (enteredPassword !== ADMIN_FILTER_PASSWORD) {
+                alert("Incorrect admin password.");
+                return;
+            }
+
+            adminPanel.hidden = false;
+            pictureInput?.focus();
+        });
+    }
+
+    function findPicture() {
+        const pictureId =
+            String(pictureInput?.value || "").trim();
+
+        if (!pictureId) {
+            alert("Please enter a Picture ID.");
+            return;
+        }
+
+        const found =
+            typeof findProductImageById === "function"
+                ? findProductImageById(pictureId)
+                : null;
+
+        if (!found) {
+            if (adminResult) {
+                adminResult.innerHTML =
+                    '<p class="admin-no-result">No image found for this Picture ID.</p>';
+            }
+            return;
+        }
+
+        const product = VIP_PRODUCTS.find(
+            item => String(item.id) === String(found.productId)
+        );
+
+        if (!adminResult) return;
+
+        adminResult.innerHTML = `
+            <div class="admin-picture-result">
+
+                <img
+                    src="${escapeHTML(found.imageUrl)}"
+                    alt="${escapeHTML(found.productName)}"
+                >
+
+                <div>
+                    <strong>${escapeHTML(found.productName)}</strong>
+
+                    <p>
+                        Picture ID:
+                        <b>${escapeHTML(found.pictureId)}</b>
+                    </p>
+
+                    <p>
+                        Image file:
+                        ${escapeHTML(found.imageUrl)}
+                    </p>
+
+                    ${
+                        product
+                            ? `
+                                <a
+                                    class="btn btn-primary"
+                                    href="product.html?id=${encodeURIComponent(product.id)}"
+                                >
+                                    Open Product
+                                </a>
+                            `
+                            : ""
+                    }
+                </div>
+
+            </div>
+        `;
+    }
+
+    pictureFindButton?.addEventListener("click", findPicture);
+
+    pictureInput?.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            findPicture();
+        }
+    });
+
+    applyFilters();
 });
