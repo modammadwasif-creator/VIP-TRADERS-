@@ -1,344 +1,491 @@
  /* =========================================
-   VIP-TRADERS - CHECKOUT JAVASCRIPT
+   VIP-TRADERS - CHECKOUT
+   Variant + selected picture + Picture ID
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
-
     const CART_KEY = "vip_traders_cart";
-
-    // VIP-TRADERS WhatsApp number
     const STORE_WHATSAPP = "923322100970";
-
-    // Delivery charges
     const DELIVERY_CHARGES = 0;
 
-    const checkoutForm = document.querySelector("#checkoutForm");
-    const orderItems = document.querySelector("#checkoutItems");
-
+    const form = document.querySelector("#checkoutForm");
+    const itemsContainer = document.querySelector("#checkoutItems");
     const subtotalElement = document.querySelector("#checkoutSubtotal");
     const deliveryElement = document.querySelector("#checkoutDelivery");
     const totalElement = document.querySelector("#checkoutTotal");
-
     const placeOrderButton = document.querySelector("#placeOrder");
 
-    // =====================================
-    // 1. GET CART
-    // =====================================
+    if (!form || !itemsContainer) return;
 
-    function getCart() {
+    function escapeHTML(value) {
+        return String(value ?? "").replace(/[&<>"']/g, c => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        })[c]);
+    }
 
+    function money(value) {
+        return "Rs. " + Number(value || 0).toLocaleString("en-PK");
+    }
+
+    function readCart() {
         try {
-
-            const cart = JSON.parse(
-                localStorage.getItem(CART_KEY) || "[]"
-            );
-
-            return Array.isArray(cart) ? cart : [];
-
-        } catch (error) {
-
+            const value = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+            return Array.isArray(value) ? value : [];
+        } catch (e) {
             return [];
-
         }
     }
 
-    // =====================================
-    // 2. FORMAT PRICE
-    // =====================================
-
-    function formatPrice(price) {
-
-        return "Rs. " + Number(price).toLocaleString("en-PK");
-
+    function writeCart(cart) {
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
     }
 
-    // =====================================
-    // 3. GET VALID ORDER ITEMS
-    // =====================================
+    function getOptions(product) {
+        return typeof getVIPProductVariants === "function"
+            ? getVIPProductVariants(product)
+            : [{
+                id: "standard",
+                name: "Standard",
+                price: Number(product.price || 0),
+                image: product.images?.[0] || "",
+                images: product.images || []
+            }];
+    }
+
+    function normalizeCart() {
+        const raw = readCart();
+        const clean = [];
+
+        raw.forEach(function (item) {
+            const product =
+                typeof getProductById === "function"
+                    ? getProductById(item.id)
+                    : null;
+
+            if (!product || product.inStock === false) return;
+
+            const options = getOptions(product);
+
+            const option =
+                options.find(v => String(v.id) === String(item.variantId)) ||
+                options.find(v => String(v.name) === String(item.variantName)) ||
+                options[0];
+
+            if (!option) return;
+
+            const images =
+                option.images?.length
+                    ? option.images
+                    : (product.images || []);
+
+            const requested =
+                typeof vipNormalizeImagePath === "function"
+                    ? vipNormalizeImagePath(item.selectedImage)
+                    : String(item.selectedImage || "");
+
+            const selectedImage =
+                images.includes(requested)
+                    ? requested
+                    : (option.image || images[0] || product.images?.[0] || "");
+
+            clean.push({
+                id: product.id,
+                quantity: Math.max(1, Number(item.quantity) || 1),
+                variantId: option.id,
+                variantName: option.name,
+                selectedImage: selectedImage,
+                unitPrice: Number(option.price || product.price || 0)
+            });
+        });
+
+        writeCart(clean);
+
+        return clean;
+    }
 
     function getOrderProducts() {
+        const cart = normalizeCart();
 
-        const cart = getCart();
-
-        return cart.map(item => {
-
+        return cart.map(function (item, cartIndex) {
             const product = getProductById(item.id);
 
-            if (!product || !product.inStock || product.price <= 0) {
-                return null;
-            }
+            const options = getOptions(product);
+
+            const option =
+                options.find(v => String(v.id) === String(item.variantId)) ||
+                options[0];
+
+            const images =
+                option.images?.length
+                    ? option.images
+                    : (product.images || []);
 
             return {
                 ...product,
-                quantity: Math.max(1, Number(item.quantity) || 1)
+                cartIndex,
+                quantity: item.quantity,
+                variant: option,
+                images,
+                selectedImage: item.selectedImage,
+                unitPrice: Number(option.price || product.price || 0)
             };
-
-        }).filter(Boolean);
+        });
     }
-
-    // =====================================
-    // 4. CALCULATE TOTALS
-    // =====================================
-
-    function calculateTotals(products) {
-
-        const subtotal = products.reduce(
-            (total, product) =>
-                total + product.price * product.quantity,
-            0
-        );
-
-        const total = subtotal + DELIVERY_CHARGES;
-
-        return {
-            subtotal,
-            delivery: DELIVERY_CHARGES,
-            total
-        };
-    }
-
-    // =====================================
-    // 5. DISPLAY ORDER SUMMARY
-    // =====================================
 
     function renderCheckout() {
-
-        if (!orderItems) return;
-
         const products = getOrderProducts();
 
-        if (products.length === 0) {
+        const cartCount = document.querySelector("#cartCount");
 
-            orderItems.innerHTML = `
+        if (cartCount) {
+            cartCount.textContent = products.reduce(
+                (sum, product) => sum + product.quantity,
+                0
+            );
+        }
+
+        if (!products.length) {
+            itemsContainer.innerHTML = `
                 <div class="empty-cart">
-                    <h3>Your Cart is Empty</h3>
-
-                    <a href="shop.html" class="btn btn-primary">
-                        Continue Shopping
-                    </a>
+                    <h3>Your cart is empty</h3>
+                    <p>Add products before checkout.</p>
+                    <a href="shop.html">Continue Shopping</a>
                 </div>
             `;
+
+            if (subtotalElement) subtotalElement.textContent = money(0);
+            if (deliveryElement) deliveryElement.textContent = money(0);
+            if (totalElement) totalElement.textContent = money(0);
 
             if (placeOrderButton) {
                 placeOrderButton.disabled = true;
             }
 
-            updateTotals({
+            return {
+                products: [],
                 subtotal: 0,
-                delivery: 0,
                 total: 0
-            });
+            };
+        }
 
-            return;
+        let subtotal = 0;
+
+        itemsContainer.innerHTML = products.map(function (product) {
+            const lineTotal = product.unitPrice * product.quantity;
+
+            subtotal += lineTotal;
+
+            return `
+                <article class="checkout-item" data-cart-index="${product.cartIndex}">
+
+                    <div class="checkout-item-top">
+
+                        <img
+                            class="checkout-item-image"
+                            src="${escapeHTML(product.selectedImage)}"
+                            alt="${escapeHTML(product.name)}"
+                            onerror="this.style.opacity='0.25'"
+                        >
+
+                        <div class="checkout-item-info">
+
+                            <h4>${escapeHTML(product.name)}</h4>
+
+                            <p>
+                                ${money(product.unitPrice)} × ${product.quantity}
+                            </p>
+
+                            <strong>${money(lineTotal)}</strong>
+
+                        </div>
+
+                    </div>
+
+                    <label class="checkout-choice-label">
+                        Color / Choice
+
+                        <select
+                            class="checkout-variant-select"
+                            data-cart-index="${product.cartIndex}"
+                        >
+                            ${getOptions(product).map(option => `
+                                <option
+                                    value="${escapeHTML(option.id)}"
+                                    ${option.id === product.variant.id ? "selected" : ""}
+                                >
+                                    ${escapeHTML(option.name)} — ${money(option.price)}
+                                </option>
+                            `).join("")}
+                        </select>
+                    </label>
+
+                    ${
+                        product.images.length > 1
+                            ? `
+                                <div class="checkout-image-choices" aria-label="Choose product picture">
+                                    ${product.images.map(image => `
+                                        <button
+                                            type="button"
+                                            class="checkout-image-choice ${image === product.selectedImage ? "active" : ""}"
+                                            data-cart-index="${product.cartIndex}"
+                                            data-image="${escapeHTML(image)}"
+                                            title="Select this picture"
+                                        >
+                                            <img src="${escapeHTML(image)}" alt="Product option">
+                                        </button>
+                                    `).join("")}
+                                </div>
+                            `
+                            : ""
+                    }
+
+                    <p class="checkout-selected-choice">
+                        Selected: ${escapeHTML(product.variant.name)}
+                    </p>
+
+                </article>
+            `;
+        }).join("");
+
+        const total = subtotal + DELIVERY_CHARGES;
+
+        if (subtotalElement) {
+            subtotalElement.textContent = money(subtotal);
+        }
+
+        if (deliveryElement) {
+            deliveryElement.textContent =
+                DELIVERY_CHARGES > 0
+                    ? money(DELIVERY_CHARGES)
+                    : "Free";
+        }
+
+        if (totalElement) {
+            totalElement.textContent = money(total);
         }
 
         if (placeOrderButton) {
             placeOrderButton.disabled = false;
         }
 
-        orderItems.innerHTML = products.map(product => {
-
-            return `
-                <div class="checkout-item">
-
-                    <div>
-                        <h4>${product.name}</h4>
-                        <p>Quantity: ${product.quantity}</p>
-                    </div>
-
-                    <strong>
-                        ${formatPrice(product.price * product.quantity)}
-                    </strong>
-
-                </div>
-            `;
-
-        }).join("");
-
-        updateTotals(calculateTotals(products));
-
+        return {
+            products,
+            subtotal,
+            total
+        };
     }
 
-    // =====================================
-    // 6. UPDATE TOTALS
-    // =====================================
+    itemsContainer.addEventListener("change", function (event) {
+        const select = event.target.closest(".checkout-variant-select");
 
-    function updateTotals(totals) {
+        if (!select) return;
 
-        if (subtotalElement) {
-            subtotalElement.textContent =
-                formatPrice(totals.subtotal);
-        }
+        const index = Number(select.dataset.cartIndex);
+        const cart = readCart();
 
-        if (deliveryElement) {
-            deliveryElement.textContent =
-                totals.delivery === 0
-                    ? "To be confirmed"
-                    : formatPrice(totals.delivery);
-        }
+        const product = getProductById(cart[index]?.id);
 
-        if (totalElement) {
-            totalElement.textContent =
-                formatPrice(totals.total);
-        }
+        if (!product) return;
 
-    }
+        const option = getOptions(product).find(
+            v => String(v.id) === select.value
+        );
 
-    // =====================================
-    // 7. GET FORM VALUE
-    // =====================================
+        if (!option) return;
 
-    function getFieldValue(fieldName) {
+        cart[index].variantId = option.id;
+        cart[index].variantName = option.name;
 
-        const field = checkoutForm.elements[fieldName];
+        cart[index].unitPrice = Number(
+            option.price || product.price || 0
+        );
 
-        return field ? field.value.trim() : "";
+        cart[index].selectedImage =
+            option.image ||
+            option.images?.[0] ||
+            product.images?.[0] ||
+            "";
 
-    }
+        writeCart(cart);
+        renderCheckout();
+    });
 
-    // =====================================
-    // 8. CLEAR CART AFTER WHATSAPP OPENS
-    // =====================================
+    itemsContainer.addEventListener("click", function (event) {
+        const button = event.target.closest(".checkout-image-choice");
 
-    function clearCartAfterOrder() {
+        if (!button) return;
 
-        // Remove saved cart
-        localStorage.removeItem(CART_KEY);
+        const index = Number(button.dataset.cartIndex);
+        const cart = readCart();
 
-        // Reset header cart count
-        const cartCount = document.querySelector("#cartCount");
+        if (!cart[index]) return;
 
-        if (cartCount) {
-            cartCount.textContent = "0";
-        }
+        cart[index].selectedImage = button.dataset.image;
 
-    }
+        writeCart(cart);
+        renderCheckout();
+    });
 
-    // =====================================
-    // 9. PLACE ORDER ON WHATSAPP
-    // =====================================
+    function buildWhatsAppMessage(customer, order) {
+        const lines = [
+            "*VIP-TRADERS - NEW ORDER*",
+            "",
+            "*CUSTOMER DETAILS*",
+            "Name: " + customer.name,
+            "Mobile: " + customer.phone,
+            "WhatsApp: " + (customer.whatsapp || "Not provided"),
+            "City: " + customer.city,
+            "Address: " + customer.address,
+            "Notes: " + (customer.notes || "None"),
+            "",
+            "*ORDER ITEMS*"
+        ];
 
-    if (checkoutForm) {
+        order.products.forEach(function (product, index) {
+            const pictureId =
+                typeof getPictureIdForImage === "function"
+                    ? getPictureIdForImage(product.id, product.selectedImage)
+                    : null;
 
-        checkoutForm.addEventListener("submit", function (event) {
-
-            event.preventDefault();
-
-            const products = getOrderProducts();
-
-            if (products.length === 0) {
-
-                alert("Your cart is empty or contains unavailable products.");
-                return;
-
-            }
-
-            if (!checkoutForm.checkValidity()) {
-
-                checkoutForm.reportValidity();
-                return;
-
-            }
-
-            const fullName = getFieldValue("fullName");
-            const phone = getFieldValue("phone");
-            const whatsapp = getFieldValue("whatsapp");
-            const city = getFieldValue("city");
-            const address = getFieldValue("address");
-            const notes = getFieldValue("notes");
-
-            if (!fullName || !phone || !city || !address) {
-
-                alert("Please complete all required delivery details.");
-                return;
-
-            }
-
-            const totals = calculateTotals(products);
-
-            // =================================
-            // CREATE WHATSAPP MESSAGE
-            // =================================
-
-            let message = `*VIP-TRADERS - NEW ORDER*\n\n`;
-
-            message += `*CUSTOMER DETAILS*\n`;
-            message += `Name: ${fullName}\n`;
-            message += `Phone: ${phone}\n`;
-            message += `WhatsApp: ${whatsapp || "Not provided"}\n`;
-            message += `City: ${city}\n`;
-            message += `Address: ${address}\n\n`;
-
-            message += `*ORDER ITEMS*\n`;
-
-            products.forEach((product, index) => {
-
-                message += `\n${index + 1}. ${product.name}\n`;
-                message += `Quantity: ${product.quantity}\n`;
-                message += `Price: ${formatPrice(product.price)}\n`;
-
-                message += `Subtotal: ${formatPrice(
-                    product.price * product.quantity
-                )}\n`;
-
-            });
-
-            message += `\n*PAYMENT METHOD*\n`;
-            message += `Cash on Delivery (COD)\n\n`;
-
-            message += `*ORDER TOTAL*\n`;
-            message += `Subtotal: ${formatPrice(totals.subtotal)}\n`;
-            message += `Delivery: To be confirmed\n`;
-            message += `Total before delivery: ${formatPrice(totals.total)}\n`;
-
-            if (notes) {
-                message += `\n*CUSTOMER NOTES*\n${notes}\n`;
-            }
-
-            message += `\nPlease confirm this order. Thank you!`;
-
-            // =================================
-            // OPEN WHATSAPP
-            // =================================
-
-            const whatsappURL =
-                `https://wa.me/${STORE_WHATSAPP}?text=${encodeURIComponent(message)}`;
-
-            const whatsappTab = window.open(
-                whatsappURL,
-                "_blank"
+            lines.push(
+                (index + 1) + ". " + product.name,
+                "   Choice / Color: " + product.variant.name,
+                "   Quantity: " + product.quantity,
+                "   Unit Price: " + money(product.unitPrice),
+                "   Selected Picture ID: " + (pictureId || "Not assigned"),
+                "   Image File: " + (product.selectedImage || "Not selected"),
+                "   Line Total: " + money(product.unitPrice * product.quantity)
             );
-
-            // =================================
-            // AUTOMATICALLY CLEAR CART
-            // =================================
-
-            if (whatsappTab) {
-
-                clearCartAfterOrder();
-
-                alert("Your order message is ready on WhatsApp. Your website cart has been cleared!");
-
-                renderCheckout();
-
-                checkoutForm.reset();
-
-            } else {
-
-                alert(
-                    "WhatsApp could not open. Please allow pop-ups in your browser. Your cart has been kept safe."
-                );
-
-            }
-
         });
 
+        lines.push(
+            "",
+            "Subtotal: " + money(order.subtotal),
+            "Delivery: " + (DELIVERY_CHARGES ? money(DELIVERY_CHARGES) : "Free"),
+            "*GRAND TOTAL: " + money(order.total) + "*",
+            "",
+            "Please confirm availability and delivery details."
+        );
+
+        return lines.join("\n");
     }
 
-    // =====================================
-    // 10. INITIAL LOAD
-    // =====================================
+    let confirmationBox =
+        document.querySelector("#whatsappSentConfirmation");
 
+    if (!confirmationBox) {
+        confirmationBox = document.createElement("div");
+
+        confirmationBox.id = "whatsappSentConfirmation";
+        confirmationBox.className = "whatsapp-sent-confirmation";
+        confirmationBox.hidden = true;
+
+        confirmationBox.innerHTML = `
+            <p>
+                WhatsApp opened. Send your order message there,
+                then return here.
+            </p>
+
+            <button
+                type="button"
+                id="confirmWhatsAppSent"
+                class="btn btn-primary"
+            >
+                I Have Sent My Order
+            </button>
+        `;
+
+        form.appendChild(confirmationBox);
+    }
+// =====================================
+// CLEAR CART AFTER WHATSAPP CONFIRMATION
+// =====================================
+
+confirmationBox.addEventListener("click", function (event) {
+
+    const confirmButton = event.target.closest("#confirmWhatsAppSent");
+
+    if (!confirmButton) return;
+
+    if (!confirm(
+        "Have you sent your order successfully on WhatsApp?"
+    )) {
+        return;
+    }
+
+    // CLEAR CART
+    localStorage.setItem(CART_KEY, JSON.stringify([]));
+
+    // RESET CUSTOMER FORM
+    form.reset();
+
+    // HIDE CONFIRMATION
+    confirmationBox.hidden = true;
+
+    // REFRESH CHECKOUT
     renderCheckout();
 
+    // UPDATE CART COUNT
+    const cartCount = document.querySelector("#cartCount");
+
+    if (cartCount) {
+        cartCount.textContent = "0";
+    }
+
+    alert(
+        "Your order is confirmed! Your cart has been cleared successfully."
+    );
+
+});
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const order = renderCheckout();
+
+        if (!order.products.length) {
+            alert("Your cart is empty.");
+            return;
+        }
+
+        if (!form.reportValidity()) return;
+
+        const customer = {
+            name: document.querySelector("#fullName")?.value.trim() || "",
+            phone: document.querySelector("#phone")?.value.trim() || "",
+            whatsapp: document.querySelector("#whatsapp")?.value.trim() || "",
+            city: document.querySelector("#city")?.value.trim() || "",
+            address: document.querySelector("#address")?.value.trim() || "",
+            notes: document.querySelector("#notes")?.value.trim() || ""
+        };
+
+        const message = buildWhatsAppMessage(customer, order);
+
+        const whatsappURL =
+            "https://wa.me/" +
+            STORE_WHATSAPP +
+            "?text=" +
+            encodeURIComponent(message);
+
+        const whatsappWindow = window.open(whatsappURL, "_blank");
+
+        if (!whatsappWindow) {
+            alert(
+                "Your browser blocked the WhatsApp window. Please allow pop-ups and press Place Order again."
+            );
+            return;
+        }
+
+        confirmationBox.hidden = false;
+
+        confirmationBox.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+    });
+
+    renderCheckout();
 });
