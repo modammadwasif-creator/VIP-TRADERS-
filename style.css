@@ -1,4 +1,4 @@
-
+ 
 /* =========================================
    VIP-TRADERS - MAIN STYLESHEET
    Theme: Luxury Black + Gold + White
@@ -1195,5 +1195,227 @@ img {
 @media (max-width: 600px) {
     .product-image-wrap {
         height: 125px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   VIP-TRADERS - VARIANT / CHECKOUT / ADMIN
+========================================= */
+
+.product-variant-control,
+.cart-choice-label,
+.checkout-choice-label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 14px 0;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.variant-select,
+.cart-variant-select,
+.checkout-variant-select {
+    width: 100%;
+    max-width: 340px;
+    min-height: 42px;
+    padding: 9px 12px;
+    border: 1px solid #d8b36a;
+    border-radius: 7px;
+    background: #fff;
+    color: #111;
+}
+
+.variant-current {
+    display: inline-block;
+    padding: 8px 11px;
+    background: #faf8f2;
+    border-left: 3px solid #d8b36a;
+    color: #333;
+}
+
+.cart-image-choices,
+.checkout-image-choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.cart-image-choice,
+.checkout-image-choice {
+    width: 54px;
+    height: 54px;
+    padding: 3px;
+    border: 2px solid #ddd;
+    border-radius: 7px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.cart-image-choice.active,
+.checkout-image-choice.active {
+    border-color: #b9852d;
+    box-shadow: 0 0 0 1px #b9852d;
+}
+
+.cart-image-choice img,
+.checkout-image-choice img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.checkout-item {
+    display: block;
+    padding: 16px 0;
+}
+
+.checkout-item-top {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.checkout-item-image {
+    width: 76px;
+    height: 76px;
+    flex: 0 0 76px;
+    object-fit: contain;
+    background: #f7f7f7;
+    border-radius: 8px;
+}
+
+.checkout-item-info h4 {
+    margin: 0 0 4px;
+}
+
+.checkout-item-info p,
+.checkout-selected-choice {
+    color: #777;
+    font-size: 12px;
+    margin: 3px 0;
+}
+
+.checkout-item-info strong {
+    display: inline-block;
+    margin-top: 3px;
+}
+
+.checkout-choice-label {
+    margin: 12px 0 6px;
+}
+
+.whatsapp-sent-confirmation {
+    margin-top: 18px;
+    padding: 15px;
+    border: 1px solid #d8b36a;
+    border-radius: 8px;
+    background: #faf8f2;
+}
+
+.whatsapp-sent-confirmation p {
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: #555;
+}
+
+/* ADMIN PICTURE FILTER */
+
+.shop-admin-tools {
+    margin: 0 0 24px;
+    padding: 16px;
+    border: 1px solid rgba(216, 179, 106, 0.45);
+    border-radius: 9px;
+    background: #faf8f2;
+}
+
+.shop-admin-tools > button {
+    border: 0;
+    border-radius: 6px;
+    padding: 11px 17px;
+    background: #111;
+    color: #edbd61;
+    font-weight: 800;
+}
+
+.admin-image-filter-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.admin-image-filter-panel input {
+    flex: 1 1 220px;
+    min-height: 42px;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.admin-image-filter-panel button {
+    border: 0;
+    border-radius: 6px;
+    padding: 10px 18px;
+    background: #d8b36a;
+    color: #111;
+    font-weight: 800;
+}
+
+.admin-picture-result {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #e7dfcf;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.admin-picture-result img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    background: #f7f7f7;
+    border-radius: 7px;
+}
+
+.admin-picture-result p,
+.admin-no-result {
+    margin: 6px 0;
+    color: #666;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 550px) {
+    .admin-picture-result {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .admin-picture-result img {
+        width: 100%;
+        height: 180px;
     }
 }
