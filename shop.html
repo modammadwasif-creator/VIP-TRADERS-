@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,7 +9,7 @@
 
     <meta name="description"
         content="Explore premium watches, AirPods, adapters and electronics at VIP-TRADERS.">
-<link rel="icon" href="vip-traders-logo.png" alt="VIP TRADERS Logo">
+   <link rel="icon" href="vip-traders-logo.png">
 
     <link rel="stylesheet" href="style.css">
 
@@ -246,8 +246,43 @@
             </select>
 
         </section>
+<!-- ADMIN SETTINGS ICON -->
 
+<section class="shop-admin-tools">
 
+    <button
+        type="button"
+        id="adminImageFilterButton"
+        aria-label="Admin Settings"
+        title="Admin Settings"
+    >
+        ⚙⚙⚙
+    </button>
+
+    <div
+        id="adminImageFilterPanel"
+        class="admin-image-filter-panel"
+        hidden
+    >
+
+        <h3>Admin Image Filter</h3>
+
+        <input
+            type="text"
+            id="pictureIdInput"
+            placeholder="Enter Picture ID"
+            autocomplete="off"
+        >
+
+        <button type="button" id="pictureIdFindButton">
+            Find Image
+        </button>
+
+    </div>
+
+    <div id="adminImageResult"></div>
+
+</section>
         <!-- RESULT COUNT -->
 
         <div class="shop-result-info">
