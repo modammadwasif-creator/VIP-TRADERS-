@@ -1,175 +1,244 @@
-/* =========================================
-   VIP-TRADERS - CART JAVASCRIPT
+  /* =========================================
+   VIP-TRADERS - SHOPPING CART
+   Per-item color / picture selection
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
+    const CART_KEY = "vip_traders_cart";
 
     const cartContainer = document.querySelector("#cartItems");
     const subtotalElement = document.querySelector("#cartSubtotal");
     const totalElement = document.querySelector("#cartTotal");
     const itemCountElement = document.querySelector("#cartItemCount");
-    const clearCartButton = document.querySelector("#clearCart");
+    const clearButton = document.querySelector("#clearCart");
 
-    const CART_KEY = "vip_traders_cart";
+    if (!cartContainer) return;
 
-    // =====================================
-    // 1. GET CART DATA
-    // =====================================
+    function escapeHTML(value) {
+        return String(value ?? "").replace(/[&<>"']/g, c => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        })[c]);
+    }
 
-    function getCart() {
+    function money(value) {
+        return "Rs. " + Number(value || 0).toLocaleString("en-PK");
+    }
+
+    function readCart() {
         try {
-            const cart = JSON.parse(
-                localStorage.getItem(CART_KEY) || "[]"
-            );
-
-            return Array.isArray(cart) ? cart : [];
-
-        } catch (error) {
+            const v = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+            return Array.isArray(v) ? v : [];
+        } catch (e) {
             return [];
         }
     }
 
-    // =====================================
-    // 2. SAVE CART DATA
-    // =====================================
-
-    function saveCart(cart) {
-        localStorage.setItem(
-            CART_KEY,
-            JSON.stringify(cart)
-        );
-
-        updateCartCount();
+    function writeCart(cart) {
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
     }
 
-    // =====================================
-    // 3. PRICE FORMAT
-    // =====================================
-
-    function formatPrice(price) {
-        return "Rs. " + Number(price).toLocaleString("en-PK");
+    function getOptions(product) {
+        return typeof getVIPProductVariants === "function"
+            ? getVIPProductVariants(product)
+            : [{
+                id: "standard",
+                name: "Standard",
+                price: Number(product.price || 0),
+                image: product.images?.[0] || "",
+                images: product.images || []
+            }];
     }
 
-    // =====================================
-    // 4. UPDATE HEADER CART COUNT
-    // =====================================
+    function normalizeCart() {
+        const raw = readCart();
+        const clean = [];
 
-    function updateCartCount() {
+        raw.forEach(function (item) {
+            const product =
+                typeof getProductById === "function"
+                    ? getProductById(item.id)
+                    : null;
 
-        const cartCount = document.querySelector("#cartCount");
-        if (!cartCount) return;
+            if (!product || product.inStock === false) return;
 
-        const cart = getCart();
+            const options = getOptions(product);
 
-        const count = cart.reduce(
-            (total, item) => total + Number(item.quantity || 0),
-            0
-        );
+            const option =
+                options.find(v => String(v.id) === String(item.variantId)) ||
+                options.find(v => String(v.name) === String(item.variantName)) ||
+                options[0];
 
-        cartCount.textContent = count;
+            if (!option) return;
+
+            const optionImages =
+                option.images?.length
+                    ? option.images
+                    : (product.images || []);
+
+            const requestedImage =
+                typeof vipNormalizeImagePath === "function"
+                    ? vipNormalizeImagePath(item.selectedImage)
+                    : String(item.selectedImage || "");
+
+            const selectedImage =
+                optionImages.includes(requestedImage)
+                    ? requestedImage
+                    : (option.image || optionImages[0] || product.images?.[0] || "");
+
+            clean.push({
+                id: product.id,
+                quantity: Math.max(1, Number(item.quantity) || 1),
+                variantId: option.id,
+                variantName: option.name,
+                selectedImage: selectedImage,
+                unitPrice: Number(option.price || product.price || 0)
+            });
+        });
+
+        writeCart(clean);
+
+        return clean;
     }
 
-    // =====================================
-    // 5. DISPLAY CART
-    // =====================================
+    function updateHeaderCount(cart) {
+        const count = document.querySelector("#cartCount");
+
+        if (count) {
+            count.textContent = cart.reduce(
+                (sum, item) => sum + item.quantity,
+                0
+            );
+        }
+    }
 
     function renderCart() {
+        const cart = normalizeCart();
 
-        if (!cartContainer) return;
+        updateHeaderCount(cart);
 
-        const cart = getCart();
-
-        let subtotal = 0;
-        let totalItems = 0;
-
-        if (cart.length === 0) {
-
+        if (!cart.length) {
             cartContainer.innerHTML = `
                 <div class="empty-cart">
-                    <h2>Your Cart is Empty</h2>
-                    <p>You haven't added any products yet.</p>
-
+                    <h2>Your Cart Is Empty</h2>
+                    <p>Add products to your cart to continue shopping.</p>
                     <a href="shop.html" class="btn btn-primary">
-                        Continue Shopping
+                        Explore Products
                     </a>
                 </div>
             `;
 
-            updateSummary(0, 0);
+            if (subtotalElement) subtotalElement.textContent = money(0);
+            if (totalElement) totalElement.textContent = money(0);
+            if (itemCountElement) itemCountElement.textContent = "0";
+
             return;
         }
 
-        const validItems = cart.map(item => {
+        let subtotal = 0;
+        let totalQty = 0;
 
+        cartContainer.innerHTML = cart.map(function (item, index) {
             const product = getProductById(item.id);
 
-            if (!product || !product.inStock) {
-                return null;
-            }
+            const options = getOptions(product);
 
-            return {
-                ...item,
-                product: product
-            };
+            const option =
+                options.find(v => String(v.id) === String(item.variantId)) ||
+                options[0];
 
-        }).filter(Boolean);
+            const price = Number(option.price || product.price || 0);
+            const lineTotal = price * item.quantity;
 
-        if (validItems.length !== cart.length) {
-            saveCart(validItems.map(item => ({
-                id: item.id,
-                quantity: item.quantity
-            })));
-        }
+            subtotal += lineTotal;
+            totalQty += item.quantity;
 
-        cartContainer.innerHTML = validItems.map(item => {
-
-            const product = item.product;
-            const quantity = Math.max(1, Number(item.quantity) || 1);
-            const image = product.images?.[0] || "";
-
-            const itemTotal = product.price * quantity;
-
-            subtotal += itemTotal;
-            totalItems += quantity;
+            const images =
+                option.images?.length
+                    ? option.images
+                    : (product.images || []);
 
             return `
-                <article class="cart-item" data-id="${product.id}">
+                <article class="cart-item" data-cart-index="${index}">
 
                     <div class="cart-item-image">
                         <img
-                            src="${image}"
-                            alt="${product.name}"
-                            onerror="this.style.display='none';"
+                            src="${escapeHTML(item.selectedImage || images[0] || "")}"
+                            alt="${escapeHTML(product.name)}"
+                            onerror="this.style.opacity='0.25'"
                         >
                     </div>
 
                     <div class="cart-item-details">
 
                         <span class="product-category">
-                            ${product.category}
+                            ${escapeHTML(product.category || "")}
                         </span>
 
-                        <h3>${product.name}</h3>
+                        <h3>${escapeHTML(product.name)}</h3>
 
                         <p class="cart-item-price">
-                            ${formatPrice(product.price)}
+                            ${money(price)} each
                         </p>
+
+                        <label class="cart-choice-label">
+                            Color / Choice
+
+                            <select
+                                class="cart-variant-select"
+                                data-action="variant"
+                                data-index="${index}"
+                            >
+                                ${options.map(v => `
+                                    <option
+                                        value="${escapeHTML(v.id)}"
+                                        ${v.id === option.id ? "selected" : ""}
+                                    >
+                                        ${escapeHTML(v.name)} — ${money(v.price)}
+                                    </option>
+                                `).join("")}
+                            </select>
+                        </label>
+
+                        ${
+                            images.length > 1
+                                ? `
+                                    <div class="cart-image-choices">
+                                        ${images.map(img => `
+                                            <button
+                                                type="button"
+                                                class="cart-image-choice ${img === item.selectedImage ? "active" : ""}"
+                                                data-action="image"
+                                                data-index="${index}"
+                                                data-image="${escapeHTML(img)}"
+                                                title="Choose this picture"
+                                            >
+                                                <img src="${escapeHTML(img)}" alt="Product option">
+                                            </button>
+                                        `).join("")}
+                                    </div>
+                                `
+                                : ""
+                        }
 
                         <div class="cart-quantity">
 
                             <button
                                 type="button"
-                                class="quantity-decrease"
-                                data-id="${product.id}"
+                                data-action="minus"
+                                data-index="${index}"
                                 aria-label="Decrease quantity"
                             >−</button>
 
-                            <span>${quantity}</span>
+                            <strong>${item.quantity}</strong>
 
                             <button
                                 type="button"
-                                class="quantity-increase"
-                                data-id="${product.id}"
+                                data-action="plus"
+                                data-index="${index}"
                                 aria-label="Increase quantity"
                             >+</button>
 
@@ -178,138 +247,109 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
 
                     <div class="cart-item-actions">
-
-                        <strong>${formatPrice(itemTotal)}</strong>
+                        <strong>${money(lineTotal)}</strong>
 
                         <button
                             type="button"
                             class="remove-cart-item"
-                            data-id="${product.id}"
+                            data-action="remove"
+                            data-index="${index}"
                         >
                             Remove
                         </button>
-
                     </div>
 
                 </article>
             `;
-
         }).join("");
 
-        updateSummary(subtotal, totalItems);
-    }
-
-    // =====================================
-    // 6. UPDATE SUMMARY
-    // =====================================
-
-    function updateSummary(subtotal, totalItems) {
-
-        if (subtotalElement) {
-            subtotalElement.textContent = formatPrice(subtotal);
-        }
-
-        if (totalElement) {
-            totalElement.textContent = formatPrice(subtotal);
-        }
+        if (subtotalElement) subtotalElement.textContent = money(subtotal);
+        if (totalElement) totalElement.textContent = money(subtotal);
 
         if (itemCountElement) {
-            itemCountElement.textContent = totalItems;
+            itemCountElement.textContent = String(totalQty);
         }
     }
 
-    // =====================================
-    // 7. CART BUTTON ACTIONS
-    // =====================================
+    cartContainer.addEventListener("click", function (event) {
+        const button = event.target.closest("[data-action]");
 
-    if (cartContainer) {
+        if (!button) return;
 
-        cartContainer.addEventListener("click", function (event) {
+        const action = button.dataset.action;
+        const index = Number(button.dataset.index);
 
-            const increaseButton = event.target.closest(".quantity-increase");
-            const decreaseButton = event.target.closest(".quantity-decrease");
-            const removeButton = event.target.closest(".remove-cart-item");
+        const cart = readCart();
 
-            let cart = getCart();
+        if (!cart[index]) return;
 
-            // INCREASE QUANTITY
+        if (action === "plus") {
+            cart[index].quantity =
+                Math.max(1, Number(cart[index].quantity) || 1) + 1;
+        }
 
-            if (increaseButton) {
+        if (action === "minus") {
+            cart[index].quantity =
+                Math.max(1, Number(cart[index].quantity) || 1) - 1;
+        }
 
-                const id = increaseButton.dataset.id;
+        if (action === "remove") {
+            cart.splice(index, 1);
+        }
 
-                const item = cart.find(product => product.id === id);
+        if (action === "image") {
+            cart[index].selectedImage = button.dataset.image;
+        }
 
-                if (item) {
-                    item.quantity++;
-                }
+        writeCart(cart);
+        renderCart();
+    });
 
-                saveCart(cart);
-                renderCart();
+    cartContainer.addEventListener("change", function (event) {
+        const select = event.target.closest('[data-action="variant"]');
+
+        if (!select) return;
+
+        const index = Number(select.dataset.index);
+        const cart = readCart();
+
+        const product = getProductById(cart[index]?.id);
+
+        if (!product) return;
+
+        const option = getOptions(product).find(
+            v => String(v.id) === select.value
+        );
+
+        if (!option) return;
+
+        cart[index].variantId = option.id;
+        cart[index].variantName = option.name;
+
+        cart[index].unitPrice = Number(
+            option.price || product.price || 0
+        );
+
+        cart[index].selectedImage =
+            option.image ||
+            option.images?.[0] ||
+            product.images?.[0] ||
+            "";
+
+        writeCart(cart);
+        renderCart();
+    });
+
+    if (clearButton) {
+        clearButton.addEventListener("click", function () {
+            if (!confirm("Are you sure you want to clear your cart?")) {
+                return;
             }
 
-            // DECREASE QUANTITY
-
-            if (decreaseButton) {
-
-                const id = decreaseButton.dataset.id;
-
-                const item = cart.find(product => product.id === id);
-
-                if (item) {
-
-                    item.quantity--;
-
-                    if (item.quantity <= 0) {
-                        cart = cart.filter(product => product.id !== id);
-                    }
-
-                }
-
-                saveCart(cart);
-                renderCart();
-            }
-
-            // REMOVE PRODUCT
-
-            if (removeButton) {
-
-                const id = removeButton.dataset.id;
-
-                cart = cart.filter(product => product.id !== id);
-
-                saveCart(cart);
-                renderCart();
-            }
-
-        });
-    }
-
-    // =====================================
-    // 8. CLEAR ENTIRE CART
-    // =====================================
-
-    if (clearCartButton) {
-
-        clearCartButton.addEventListener("click", function () {
-
-            const confirmed = confirm(
-                "Are you sure you want to clear your cart?"
-            );
-
-            if (!confirmed) return;
-
-            saveCart([]);
+            writeCart([]);
             renderCart();
-
         });
     }
 
-    // =====================================
-    // 9. INITIAL LOAD
-    // =====================================
-
-    updateCartCount();
     renderCart();
-
 });
