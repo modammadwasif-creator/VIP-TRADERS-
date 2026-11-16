@@ -1489,6 +1489,65 @@ Exclusively at VIP TRADERS. ❤️
 
 
 
+
+
+
+
+{
+    id:  "watch-015",
+    name: "TOMI Original T-044 Premium Leather Watch",
+    category: "Watches",
+    price: 2200,
+    oldPrice: 2800,
+
+    images: [
+        "Screenshot 2026-11-16 235134.png",
+        "Screenshot 2026-11-16 235208.png",
+        "Screenshot 2026-11-16 235227.png",
+        "Screenshot 2026-11-16 235239.png",
+        "Screenshot 2026-11-16 235253.png",
+        "Screenshot 2026-11-16 235330.png"
+    ],
+
+    description: `
+        TOMI ORIGINAL T-044 Premium Leather Men's Watch.
+
+        Model Number: T-044
+        Movement Type: Quartz
+        Dial Diameter: 4.2 cm
+        Case Thickness: 1.1 cm
+        Band Length: 25.5 cm
+        Band Width: 2.2 cm
+        Clasp Type: Hook Buckle
+        Band Material: Premium Leather
+        Case Material: Stainless Steel
+        Glass Type: Mineral Crystal Glass
+        Water Resistance: Limited resistance for daily splashes
+        User: Men
+        Style: Casual, Fashion, Luxury, Formal and Everyday.
+
+        Original TOMI Box Included.
+        Special Price: Rs. 2,200
+    `,
+
+    badge: "SPECIAL OFFER",
+    featured: true,
+    inStock: true
+},
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
 ];
 
 /* =========================================
