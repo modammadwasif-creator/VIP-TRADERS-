@@ -106,7 +106,7 @@ Available at VIP-TRADERS.`,
 
         category: "AirPods",
 
-        price: 800,
+        price: 1000,
 
         oldPrice: 1500,
 
