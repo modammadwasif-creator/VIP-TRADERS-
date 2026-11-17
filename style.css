@@ -1,4 +1,89 @@
- 
+/* CUSTOMER REVIEWS BOX */
+
+.review-link-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 420px;
+    margin: 25px auto;
+    padding: 18px 20px;
+    background: linear-gradient(135deg, #171717, #292929);
+    border: 1px solid #c69b45;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+}
+
+.review-link-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(198,155,69,0.25);
+    border-color: #f2cc78;
+}
+
+.review-box-icon {
+    font-size: 30px;
+}
+
+.review-box-content {
+    flex: 1;
+}
+
+.review-box-content h3 {
+    margin: 0 0 5px;
+    color: #e8bd68;
+    font-size: 17px;
+}
+
+.review-box-content p {
+    margin: 0;
+    color: #ddd;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.review-box-arrow {
+    font-size: 25px;
+    color: #e8bd68;
+    transition: transform 0.3s ease;
+}
+
+.review-link-box:hover .review-box-arrow {
+    transform: translateX(5px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* =========================================
    VIP-TRADERS - MAIN STYLESHEET
    Theme: Luxury Black + Gold + White
