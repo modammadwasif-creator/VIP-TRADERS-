@@ -1538,7 +1538,50 @@ Exclusively at VIP TRADERS. ❤️
 
 
 
+{
+    id:  "watch-016",
+    name: "COSMO PRX Model Watch",
+    category: "Watches",
 
+    price: 1000,
+    oldPrice: 1600,
+
+    images: [ 
+        "Screenshot 2026-11-17 162612.png",
+"Screenshot 2026-11-17 162626.png",
+"Screenshot 2026-11-17 162638.png",
+"Screenshot 2026-11-17 162659.png"
+
+    ],description: `
+    COSMO PRX – Premium Edition
+
+    Discover timeless style with the COSMO PRX Model, featuring
+    a modern design that adds elegance and sophistication
+    to your everyday look.
+
+    PREMIUM FEATURES:
+    • Elegant PRX Model Design
+    • Functional Date Display
+    • Secure Master Lock System
+    • Multiple Attractive New Arrival Colours
+    • Stylish Design for Everyday Wear
+    • Normal Original-Style Watch Box Included
+
+    PERFECT FOR:
+    Casual Wear, Daily Use, Fashion & Special Occasions.
+
+    SPECIAL OFFER:
+    Regular Price: Rs. 1,600
+    VIP TRADERS Price: Rs. 1,000
+
+
+    Upgrade Your Style with COSMO PRX.
+    Exclusively Available at VIP TRADERS ❤️
+`,
+    badge: "NEW ARRIVAL",
+    featured: true,
+    inStock: true
+},
 
 
 
@@ -1546,7 +1589,7 @@ Exclusively at VIP TRADERS. ❤️
   
 
 {
-    id:  "watch-016",
+    id:  "watch-017",
     name: "COSMO PRX Model Watch",
     category: "Watches",
 
