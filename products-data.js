@@ -1545,6 +1545,42 @@ Exclusively at VIP TRADERS. ❤️
 
   
 
+{
+    id:  "watch-016",
+    name: "COSMO PRX Model Watch",
+    category: "Watches",
+
+    price: 1000,
+    oldPrice: 1600,
+
+    images: [ 
+        
+"Screenshot 2026-11-17 162342.png",
+"Screenshot 2026-11-17 162354.png",
+"Screenshot 2026-11-17 162305.png",
+"Screenshot 2026-11-17 162325.png"
+    ],
+description: `
+    COSMO PRX – Premium Stylish Watch
+
+    Upgrade your style with the elegant COSMO PRX Model.
+    Designed for a modern, classy and sophisticated look.
+
+    FEATURES:
+    - Premium PRX Model Design
+    - Date Working Feature
+    - Master Lock System
+    - Beautiful New Arrival Colours
+    - Stylish & Comfortable Design
+    - Normal Watch Box Included
+
+    Available at VIP TRADERS ❤️
+`,
+    badge: "NEW ARRIVAL",
+    featured: true,
+    inStock: true
+},
+
 
 
 
