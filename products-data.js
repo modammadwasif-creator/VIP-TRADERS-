@@ -70,7 +70,8 @@ const VIP_PRODUCTS = [
     badge: "NEW ARRIVAL",
     featured: true,
     inStock: true
-},{
+},
+  {
     id: "earbuds-003",
     name: "Audio Nice TWS Earphones",
     category: "AirPods",
