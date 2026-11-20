@@ -6,147 +6,7 @@
 
 
 const VIP_PRODUCTS = [
-
-{
-    id: "powerbank-003",
-    name: "ROMOSS 10000mAh Fast Charging Power Bank",
-    category: "gadjets",
-
-    price: 2300,
-    oldPrice: 2700,
-
-    images: [
-        "Screenshot 2026-11-20 171345.png"
-    ],
-
-    description: `
-        ROMOSS 10000mAh POWER BANK 🔋
-
-        Keep your devices powered up wherever you go!
-
-        PREMIUM FEATURES:
-        - Original ROMOSS Brand
-        - 10000mAh Battery Capacity
-        - Fast Charging Support
-        - Charging Speed Depends on Mobile Compatibility
-        - Compact & Portable Design
-        - Perfect for Daily Use and Travel
-
-        SPECIAL VIP TRADERS OFFER:
-        Old Price: Rs. 2,700
-        Now Only: Rs. 2,300 🔥
-
-        Order Now from VIP TRADERS ❤️
-    `,
-
-    badge: "HOT DEAL",
-    featured: true,
-    inStock: true
-},
-{
-    id: "powerbank-002",
-    name: "20000mAh Fast Charging Power Bank",
-    category: "gadjets",
-
-    price: 2750,
-    oldPrice: 3200,
-
-    images: [
-        "Screenshot 2026-11-20 171318.png"
-    ],
-
-    description: `
-        20000mAh POWER BANK 🔋
-
-        Never run out of battery when you need it most! 
-        Stay connected and keep your gadgets powered up wherever you go.
-
-        PREMIUM FEATURES:
-        - Massive 20000mAh Battery Capacity
-        - Fast Charging Support
-        - Convenient Portable Charging
-        - Ideal for Smartphones & Compatible Gadgets
-        - Perfect for Travel and Everyday Use
-        - Fast Charging Speed Depends on Mobile Device Compatibility
-
-        SPECIAL VIP TRADERS OFFER:
-        Old Price: Rs. 3,200
-        Now Only: Rs. 2,750 🔥
-
-        Grab Yours Today at VIP TRADERS ❤️
-    `,
-
-    badge: "HOT DEAL",
-    featured: true,
-    inStock: true
-},
-
-  
-{
-    id: "powerbank-001",
-    name: "10000mAh Fast Charging Power Bank",
-    category: "gadjets",
-
-    price: 2650,
-    oldPrice: 3100,
-
-    images: [
-        "Screenshot 2026-11-20 171359.png"
-    ],
-
-    description: `
-        10000mAh POWER BANK ❤️
-
-        Powerful portable charging solution.
-
-        FEATURES:
-        - 10000mAh Battery Capacity
-        - Fast Charging Support
-        - Charging Speed Depends on Mobile Compatibility
-        - Portable & Convenient Design
-
-        Available at VIP TRADERS 🔥
-    `,
-
-    badge: "NEW ARRIVAL",
-    featured: true,
-    inStock: true
-},
-
-
-{
-    id: "earbuds-002",
-    name: "TWS Wireless Digital Bluetooth Earbuds",
-    category: "AirPods",
-
-    price: 1500,
-    oldPrice: 1900,
-
-    images: [
-        "Screenshot 2026-11-20 171432.png"
-    ],
-
-    description: `
-        TWS WIRELESS DIGITAL BLUETOOTH EARBUDS ❤️
-
-        Premium wireless earbuds with high-quality sound.
-
-        FEATURES:
-        - TWS Wireless Technology
-        - Digital Bluetooth Earbuds
-        - Available Color: White 🤍
-        - High Quality Sound
-        - Stylish Design
-        - Comfortable to Use
-
-        Available at VIP TRADERS 🔥
-    `,
-
-    badge: "NEW ARRIVAL",
-    featured: true,
-    inStock: true
-},
-  {
+   {
     id: "earbuds-003",
     name: "Audio Nice TWS Earphones",
     category: "AirPods",
@@ -622,6 +482,146 @@ Available at VIP TRADERS.
         inStock: true
 
     },
+
+{
+    id: "powerbank-003",
+    name: "ROMOSS 10000mAh Fast Charging Power Bank",
+    category: "gadjets",
+
+    price: 2300,
+    oldPrice: 2700,
+
+    images: [
+        "Screenshot 2026-11-20 171345.png"
+    ],
+
+    description: `
+        ROMOSS 10000mAh POWER BANK 🔋
+
+        Keep your devices powered up wherever you go!
+
+        PREMIUM FEATURES:
+        - Original ROMOSS Brand
+        - 10000mAh Battery Capacity
+        - Fast Charging Support
+        - Charging Speed Depends on Mobile Compatibility
+        - Compact & Portable Design
+        - Perfect for Daily Use and Travel
+
+        SPECIAL VIP TRADERS OFFER:
+        Old Price: Rs. 2,700
+        Now Only: Rs. 2,300 🔥
+
+        Order Now from VIP TRADERS ❤️
+    `,
+
+    badge: "HOT DEAL",
+    featured: true,
+    inStock: true
+},
+{
+    id: "powerbank-002",
+    name: "20000mAh Fast Charging Power Bank",
+    category: "gadjets",
+
+    price: 2750,
+    oldPrice: 3200,
+
+    images: [
+        "Screenshot 2026-11-20 171318.png"
+    ],
+
+    description: `
+        20000mAh POWER BANK 🔋
+
+        Never run out of battery when you need it most! 
+        Stay connected and keep your gadgets powered up wherever you go.
+
+        PREMIUM FEATURES:
+        - Massive 20000mAh Battery Capacity
+        - Fast Charging Support
+        - Convenient Portable Charging
+        - Ideal for Smartphones & Compatible Gadgets
+        - Perfect for Travel and Everyday Use
+        - Fast Charging Speed Depends on Mobile Device Compatibility
+
+        SPECIAL VIP TRADERS OFFER:
+        Old Price: Rs. 3,200
+        Now Only: Rs. 2,750 🔥
+
+        Grab Yours Today at VIP TRADERS ❤️
+    `,
+
+    badge: "HOT DEAL",
+    featured: true,
+    inStock: true
+},
+
+  
+{
+    id: "powerbank-001",
+    name: "10000mAh Fast Charging Power Bank",
+    category: "gadjets",
+
+    price: 2650,
+    oldPrice: 3100,
+
+    images: [
+        "Screenshot 2026-11-20 171359.png"
+    ],
+
+    description: `
+        10000mAh POWER BANK ❤️
+
+        Powerful portable charging solution.
+
+        FEATURES:
+        - 10000mAh Battery Capacity
+        - Fast Charging Support
+        - Charging Speed Depends on Mobile Compatibility
+        - Portable & Convenient Design
+
+        Available at VIP TRADERS 🔥
+    `,
+
+    badge: "NEW ARRIVAL",
+    featured: true,
+    inStock: true
+},
+
+
+{
+    id: "earbuds-002",
+    name: "TWS Wireless Digital Bluetooth Earbuds",
+    category: "AirPods",
+
+    price: 1500,
+    oldPrice: 1900,
+
+    images: [
+        "Screenshot 2026-11-20 171432.png"
+    ],
+
+    description: `
+        TWS WIRELESS DIGITAL BLUETOOTH EARBUDS ❤️
+
+        Premium wireless earbuds with high-quality sound.
+
+        FEATURES:
+        - TWS Wireless Technology
+        - Digital Bluetooth Earbuds
+        - Available Color: White 🤍
+        - High Quality Sound
+        - Stylish Design
+        - Comfortable to Use
+
+        Available at VIP TRADERS 🔥
+    `,
+
+    badge: "NEW ARRIVAL",
+    featured: true,
+    inStock: true
+},
 
 
 
