@@ -7,7 +7,37 @@
 
 
 const VIP_PRODUCTS = [
+{
+    id: "earbuds-001",
+    name: "Baseus AirPods",
+    category: "AirPods",
 
+    price: 1850,
+    oldPrice: 2400,
+
+    images: [
+        "Screenshot 2026-11-20 171450.png"
+    ],
+
+    description: `
+        BASEUS AIRPODS ❤️
+
+        Premium quality earbuds with amazing sound.
+
+        FEATURES:
+        - Brand: Baseus
+        - Available Colors: Black & White
+        - High Quality Sound
+        - Stylish Design
+        - Comfortable to Use
+
+        Available at VIP TRADERS 🔥
+    `,
+
+    badge: "NEW ARRIVAL",
+    featured: true,
+    inStock: true
+},
 
 
     // 1. SKMEI WATCH
