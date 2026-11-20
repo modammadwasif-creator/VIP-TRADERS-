@@ -7,6 +7,103 @@
 
 
 const VIP_PRODUCTS = [
+
+
+{
+    id: "powerbank-001",
+    name: "10000mAh Fast Charging Power Bank",
+    category: " gadjets ",
+
+    price: 2650,
+    oldPrice: 3100,
+
+    images: [
+        "Screenshot 2026-11-20 171359.png"
+    ],
+
+    description: `
+        10000mAh POWER BANK ❤️
+
+        Powerful portable charging solution.
+
+        FEATURES:
+        - 10000mAh Battery Capacity
+        - Fast Charging Support
+        - Charging Speed Depends on Mobile Compatibility
+        - Portable & Convenient Design
+
+        Available at VIP TRADERS 🔥
+    `,
+
+    badge: "NEW ARRIVAL",
+    featured: true,
+    inStock: true
+},
+
+
+{
+    id: "earbuds-002",
+    name: "TWS Wireless Digital Bluetooth Earbuds",
+    category: "AirPods",
+
+    price: 1500,
+    oldPrice: 1900,
+
+    images: [
+        "Screenshot 2026-11-20 171432.png"
+    ],
+
+    description: `
+        TWS WIRELESS DIGITAL BLUETOOTH EARBUDS ❤️
+
+        Premium wireless earbuds with high-quality sound.
+
+        FEATURES:
+        - TWS Wireless Technology
+        - Digital Bluetooth Earbuds
+        - Available Color: White 🤍
+        - High Quality Sound
+        - Stylish Design
+        - Comfortable to Use
+
+        Available at VIP TRADERS 🔥
+    `,
+
+    badge: "NEW ARRIVAL",
+    featured: true,
+    inStock: true
+},{
+    id: "earbuds-003",
+    name: "Audio Nice TWS Earphones",
+    category: "AirPods",
+
+    price: 1700,
+    oldPrice: 2100,
+
+    images: [
+        "Screenshot 2026-11-20 171412.png"
+    ],
+
+    description: `
+        AUDIO NICE TWS EARPHONES ❤️
+
+        Premium wireless earphones with high-quality sound.
+
+        FEATURES:
+        - Audio Nice TWS Earphones
+        - Available Color: Black 🖤
+        - High Quality Sound
+        - Wireless Design
+        - Stylish & Comfortable
+
+        Available at VIP TRADERS 🔥
+    `,
+
+    badge: "NEW ARRIVAL",
+    featured: true,
+    inStock: true
+},
+  
 {
     id: "earbuds-001",
     name: "Baseus AirPods",
