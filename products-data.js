@@ -3,6 +3,9 @@
    VIP-TRADERS - PRODUCT DATABASE
 
 ========================================= */
+
+
+const VIP_PRODUCTS = [
 {
     id: "powerbank-002",
     name: "20000mAh Fast Charging Power Bank",
@@ -40,9 +43,6 @@
     featured: true,
     inStock: true
 },
-
-
-const VIP_PRODUCTS = [
 
 
 {
