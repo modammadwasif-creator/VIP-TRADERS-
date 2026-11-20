@@ -7,7 +7,42 @@
 
 const VIP_PRODUCTS = [
 
+{
+    id: "powerbank-003",
+    name: "ROMOSS 10000mAh Fast Charging Power Bank",
+    category: "gadjets",
 
+    price: 2300,
+    oldPrice: 2700,
+
+    images: [
+        "Screenshot 2026-11-20 171345.png"
+    ],
+
+    description: `
+        ROMOSS 10000mAh POWER BANK 🔋
+
+        Keep your devices powered up wherever you go!
+
+        PREMIUM FEATURES:
+        - Original ROMOSS Brand
+        - 10000mAh Battery Capacity
+        - Fast Charging Support
+        - Charging Speed Depends on Mobile Compatibility
+        - Compact & Portable Design
+        - Perfect for Daily Use and Travel
+
+        SPECIAL VIP TRADERS OFFER:
+        Old Price: Rs. 2,700
+        Now Only: Rs. 2,300 🔥
+
+        Order Now from VIP TRADERS ❤️
+    `,
+
+    badge: "HOT DEAL",
+    featured: true,
+    inStock: true
+},
 {
     id: "powerbank-002",
     name: "20000mAh Fast Charging Power Bank",
