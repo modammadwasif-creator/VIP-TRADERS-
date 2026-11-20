@@ -1624,8 +1624,87 @@ description: `
     inStock: true
 },
 
+{
+    id: "watch-018",
+    name: "TOMI ORIGINAL T-044",
+    category: "Watches",
+
+    price: 2100,
+    oldPrice: 2700,
+
+    images: [
+        "Screenshot 2026-11-20 171842.png"
+    ],
+
+    description: `
+        TOMI ORIGINAL T-044 – Premium Leather Watch
+
+        Elegant and stylish wrist watch with premium leather strap.
+
+        FEATURES:
+        - Model Number: T-044
+        - Quartz Movement
+        - Dial Diameter: 4.2 cm
+        - Case Thickness: 1.1 cm
+        - Band Length: 25.5 cm
+        - Band Width: 2.2 cm
+        - Hook Buckle
+        - Premium Leather Band
+        - Stainless Steel Case
+        - Mineral Crystal Glass
+        - Limited Daily Splash Resistance
+        - Original TOMI Box Included
+
+        Available at VIP TRADERS 🔥
+    `,
+
+    badge: "NEW ARRIVAL",
+    featured: true,
+    inStock: true
+},
 
 
+{
+    id: "watch-019",
+    name: "TISSOT 1853 Chronograph",
+    category: "Watches",
+
+    price: 3100,
+    oldPrice: 3900,
+
+    images: [
+        "Screenshot 2026-11-20 171929.png"
+    ],
+
+    description: `
+        TISSOT 1853 – Famous Chronograph Model
+
+        Premium quality watch with leather strap and working chronograph features.
+
+        FEATURES:
+        - Famous 1853 Model
+        - Working Chronograph
+        - Leather Strap
+        - Master Lock
+        - All Spot Dials Working
+        - Modern Watches Name Box Included
+
+        Available at VIP TRADERS 🔥
+    `,
+
+    badge: "NEW ARRIVAL",
+    featured: true,
+    inStock: true
+},
+
+
+
+
+
+
+
+
+  
 
 ];
 
