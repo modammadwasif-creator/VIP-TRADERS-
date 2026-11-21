@@ -6,6 +6,90 @@
 
 
 const VIP_PRODUCTS = [
+
+{
+    id:   "watch-020",
+    name: "BINBOND Original BB-466 Chronograph Watch",
+    category: "Watches",
+    price: 3300,
+    oldPrice: 3700,
+    images: [
+        "Screenshot 2026-11-21 184807.png"
+    ],
+    description: `
+        BINBOND ORIGINAL WATCHES ❤️
+
+        GENT'S WATCH COLLECTION
+
+        FEATURES:
+        - China Assembled 🇨🇳
+        - Water Resistant 💦
+        - Model No. BB-466
+        - Stainless Steel Chain
+        - Brass Case
+        - Butterfly Lock 🦋
+        - Chronograph Edition
+        - All Inner Dials Working
+        - Famous Patek Nautilus Inspired Design
+        - Different Colour Combinations Available
+
+        💰 Watch Price: Rs. 3,300
+        📦 With Original Company Box: Rs. 3,600
+
+        Limited Stock!
+
+        Available at CROWNIX 🔥
+    `,
+    badge: "LIMITED STOCK",
+    featured: true,
+    inStock: true,
+    paymentMethod: "COD",
+ },
+
+  
+
+{
+    id: "watch-019",
+    name: "CHENXI Chronograph Men Watch",
+    category: "Men Watches",
+    price: 3650,
+    oldPrice: 4100,
+    images: [
+        "Screenshot 2026-11-21 184753.png"
+    ],
+    description: `
+        CHENXI COLLECTION ❤️
+
+        Time to Elevate Your Style!
+
+        FEATURES:
+        - Water Resistant 💦
+        - China Assembled
+        - Chronograph Edition
+        - Premium Round Shape Dial
+        - Time, Day & Date Display
+        - Alarm & Stopwatch Display
+        - All Inner Dials Working
+        - Stainless Steel Band
+        - Different Dial Colours Available
+
+        📦 Normal Box Included
+
+        💰 Price: Rs. 3,650 Only
+
+        Available at CROWNIX 🔥
+    `,
+    badge: "NEW COLLECTION",
+    featured: true,
+    inStock: true,
+    paymentMethod: "COD"
+},
+
+
+
+
+
+  
    {
     id: "earbuds-003",
     name: "Audio Nice TWS Earphones",
