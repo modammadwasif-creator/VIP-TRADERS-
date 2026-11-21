@@ -51,7 +51,7 @@ const VIP_PRODUCTS = [
 {
     id: "watch-019",
     name: "CHENXI Chronograph Men Watch",
-    category: "Men Watches",
+    category: "Watches",
     price: 3650,
     oldPrice: 4100,
     images: [
