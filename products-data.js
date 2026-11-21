@@ -11,7 +11,7 @@ const VIP_PRODUCTS = [
     name: "Audio Nice TWS Earphones",
     category: "AirPods",
 
-    price: 1700,
+    price: 1650,
     oldPrice: 2100,
 
     images: [
