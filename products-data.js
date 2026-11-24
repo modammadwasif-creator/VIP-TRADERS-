@@ -6,7 +6,51 @@
 
 
 const VIP_PRODUCTS = [
-
+{
+    id: "clothing-001",
+    name: "INDIAN BOTI 3pc WINTER Casual Collection",
+    category: "Ladies Clothing",
+    price: 3150,
+    oldPrice: 4850,
+    description: "Premium 3 Piece Indian Boti Winter Casual Collection. Dhanak Air Jet best world class quality stuff.",
+    features: [
+        "Front Embroidered",
+        "Dhanak Lace Dupatta",
+        "Embroidered Sleeves XXL",
+        "Embroidered Trouser",
+        "Premium Dhanak Air Jet Fabric",
+        "Free Delivery"
+    ],
+    images: [
+        "Screenshot 2026-11-25 002926.png",
+        "Screenshot 2026-11-25 002945.png",
+        "Screenshot 2026-11-25 002956.png",
+        "Screenshot 2026-11-25 003014.png",
+        "Screenshot 2026-11-25 003030.png",
+        "Screenshot 2026-11-25 003048.png",
+        "Screenshot 2026-11-25 003113.png",
+        "Screenshot 2026-11-25 003126.png",
+        "Screenshot 2026-11-25 003146.png",
+        "Screenshot 2026-11-25 003157.png",
+        "Screenshot 2026-11-25 003205.png",
+        "Screenshot 2026-11-25 003215.png",
+        "Screenshot 2026-11-25 003227.png",
+        "Screenshot 2026-11-25 003237.png",
+        "Screenshot 2026-11-25 003244.png",
+        "Screenshot 2026-11-25 003259.png",
+        "Screenshot 2026-11-25 003310.png",
+        "Screenshot 2026-11-25 003319.png",
+        "Screenshot 2026-11-25 003328.png",
+        "Screenshot 2026-11-25 003341.png",
+        "Screenshot 2026-11-25 003352.png",
+        "Screenshot 2026-11-25 003401.png",
+        "Screenshot 2026-11-25 003410.png",
+        "Screenshot 2026-11-25 003420.png"
+    ],
+    inStock: true,
+    featured: true,
+    delivery: "Free Delivery"
+},
  
 {
     id:   "watch-020",
