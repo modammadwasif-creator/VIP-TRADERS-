@@ -7,6 +7,39 @@
 
 const VIP_PRODUCTS = [
 {
+    id: "clothing-002",
+    name: "Men's Premium Wash & Wear Suit",
+    category: "Men Clothing",
+    price: 1950,
+    oldPrice: 2950,
+
+    images: [
+        "product-images/Screenshot 2026-11-25 170614.png",
+        "product-images/Screenshot 2026-11-25 002717.png",
+        "product-images/Screenshot 2026-11-25 002734.png"
+    ],
+
+    description: `
+        MASHALLAH! MEN'S PREMIUM WASH & WEAR SUIT
+
+        • Premium Wash & Wear Fabric
+        • 4 Meters Complete Suit
+        • All Colours Available
+        • Fabric Quality Guarantee
+
+        Original Price: Rs. 2,950
+        Special Offer: Rs. 1,950 Only!
+
+        Available at VIP TRADERS.
+        VVIP Rates - Premium Quality.
+    `,
+
+    badge: "Special Offer",
+    featured: true,
+    inStock: true
+},
+  
+{
     id: "clothing-001",
     name: "INDIAN BOTI 3pc WINTER Casual Collection",
     category: "Ladies Clothing",
