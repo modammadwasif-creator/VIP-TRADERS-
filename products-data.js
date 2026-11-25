@@ -10,7 +10,7 @@ const VIP_PRODUCTS = [
 {
     id: "gadgets-004",
     name: "20000mAh Fast Charging Power Bank",
-    category: "gadgets",
+    category: "gadjets",
     price: 2500,
     oldPrice: 3400,
 
