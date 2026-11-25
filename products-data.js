@@ -6,6 +6,40 @@
 
 
 const VIP_PRODUCTS = [
+{
+    id: "watch-022",
+    name: "AP Butterfly Lock Watch",
+    category: "Watches",
+    price: 1400,
+    oldPrice: 2700,
+images: [
+    "Screenshot 2026-11-25 175143.png",
+    "Screenshot 2026-11-25 174950.png",
+    "Screenshot 2026-11-25 175011.png",
+    "Screenshot 2026-11-25 175025.png",
+    "Screenshot 2026-11-25 175052.png",
+    "Screenshot 2026-11-25 175107.png"
+],
+
+    description: `
+        NEW ARRIVAL - AP BUTTERFLY LOCK WATCH
+
+        • Butterfly Lock
+        • New Attractive Colours
+        • Stylish Premium Look
+
+        Old Price: Rs. 2,700
+        Special Price: Rs. 1,400 Only!
+
+        Available at VIP TRADERS.
+    `,
+
+    badge: "New Arrival",
+    featured: true,
+    inStock: true
+},
+
+  
 
 {
     id: "gadgets-004",
