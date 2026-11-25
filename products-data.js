@@ -6,6 +6,59 @@
 
 
 const VIP_PRODUCTS = [
+
+
+
+{
+    id: "clothing-003",
+    name: "BATIK 2pc Wedding Winter Collection",
+    category: "Ladies Clothing",
+    price: 2650,
+    oldPrice: 4899,
+
+    images: [
+        "Screenshot 2026-11-25 172229.png",
+        "Screenshot 2026-11-25 172240.png",
+        "Screenshot 2026-11-25 172250.png",
+        "Screenshot 2026-11-25 172304.png",
+        "Screenshot 2026-11-25 172103.png",
+        "Screenshot 2026-11-25 172127.png",
+        "Screenshot 2026-11-25 172201.png",
+        "Screenshot 2026-11-25 172215.png"
+    ],
+
+    description: `
+        ❄️ BATIK 2PC WEDDING WINTER COLLECTION ❄️
+
+        • DHANK Best World Class Quality Stuff
+        • Front Full Embroidered
+        • Sleeves Embroidered
+        • Embroidered Trouser
+        • Premium Winter Collection
+
+        Old Price: Rs. 4,899
+        Special Offer: Rs. 2,650 Only!
+
+        FREE DELIVERY INCLUDED!
+
+        Available at VIP TRADERS.
+    `,
+
+    badge: "Winter Sale",
+    featured: true,
+    inStock: true
+},
+
+
+
+
+
+
+
+
+
+
+  
 {
     id: "clothing-002",
     name: "Men's Premium Wash & Wear Suit",
