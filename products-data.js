@@ -7,7 +7,35 @@
 
 const VIP_PRODUCTS = [
 
+{
+    id: "gadgets-004",
+    name: "20000mAh Fast Charging Power Bank",
+    category: "gadgets",
+    price: 2500,
+    oldPrice: 3400,
 
+    images: [
+        "Screenshot 2026-11-25 172016.png"
+    ],
+
+    description: `
+        🔋 HIGH QUALITY 20000mAh POWER BANK
+
+        • 20000mAh Battery Capacity
+        • High Quality Power Bank
+        • Fast Charging Support
+        • Perfect for Daily Use
+
+        Old Price: Rs. 3,400
+        Special Offer: Rs. 2,500 Only!
+
+        Available at VIP TRADERS.
+    `,
+
+    badge: "Hot Deal",
+    featured: true,
+    inStock: true
+},
 
 {
     id: "clothing-003",
